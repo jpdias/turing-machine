@@ -1,10 +1,95 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <head>
-    </head>
-    <body>
+    <title>FEUP - Compilers -  Turing Machine</title>
 
-        
-    </body>
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>FEUP/Compilers -  Turing Machine</h1>
+      </div>
+        <div> <h3>Formal Defenition - Tuples</h3></div>
+      <div class="row">
+          <div class="col-md-6" style="width:585px;">
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="Q" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: A,B,C,HALT"></input></div>
+              <div><br></br></div>
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="&Gamma;" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: 0,1"></input></div>
+              <div><br></br></div>
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="b" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: 0"></input></div>
+              <div><br></br></div>
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="&sum;" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: 1"></input></div>          
+              <div><br></br></div>
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="q0" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: A"></input></div>
+              <div><br></br></div>
+                <div class="col-md-2"><input type="text" class="form-control" placeholder="F" disabled="true"></div>
+                <div class="col-md-10"><input type="text" class="form-control" placeholder="Example: HALT"></input></div>
+          </div>
+          <div class="col-md-6" style="height:234px;overflow: auto;" >
+              <table class="table table-bordered table-condensed" id="tableToModify">
+                  <thead>
+                    <tr>
+                      <th>Actual State</th>
+                        <th></th>
+                      <th>Next State</th>
+                        <th></th>
+                      <th>Scanned Symbol</th>
+                        <th></th>
+                      <th>Print Symbol</th>
+                        <th></th>
+                      <th>Direction</th>
+                        <th><button type="button" class="btn btn-default btn-xs " onclick="cloneRow()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                          </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="rowToClone">
+                    <tr align="center" valign="middle" >
+                      <td><input type="text" class="form-control input-sm"></td>
+                      <td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td>
+                      <td><input type="text" class="form-control input-sm"></td>
+                      <td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td>
+                      <td><input type="text" class="form-control input-sm"></td>
+                      <td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td>
+                      <td><input type="text" class="form-control input-sm"></td>
+                      <td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td>
+                      <td><input type="text" class="form-control input-sm"></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<script type="text/javascript">
+		function cloneRow()
+		{
+			var row = document.getElementById("rowToClone"); // find row to copy
+			var table = document.getElementById("tableToModify"); // find table to append to
+			var clone = row.cloneNode(true); // copy children too
+			clone.id = "rowToClone"; // change id or other attributes/contents
+			table.appendChild(clone); // add new row to end of table
+		}
+            
+    </script>
+  </body>
 </html>
