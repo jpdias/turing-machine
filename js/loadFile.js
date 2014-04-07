@@ -21,6 +21,9 @@ function handleFileSelect(evt) {
 				var text = a.split("\n");
                 for(x=1;x<text.length;x++){
                     var line = text[x].split(",");
+					if(line.length!=5){
+						window.alert("Sintax error on line " + x + "\n\nWrong sequence of tokens." + "\nExpected to have 5 tokens but has " + line.length + ";"); 
+					}
                     data.push(new Transition(line[0], line[1], line[2], line[3], line[4]));
                     console.log(data[x-1]);
                 }
