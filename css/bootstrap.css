@@ -5,6 +5,18 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+#drop_zone {
+border: 2px dashed #bbb;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+padding: 25px;
+text-align: center;
+font: 20pt bold 'Vollkorn';
+color: #bbb;
+}
+
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
