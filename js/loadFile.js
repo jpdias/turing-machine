@@ -1,3 +1,9 @@
+var imported = document.createElement('script');
+imported.src = 'js/structure.js';
+document.head.appendChild(imported);
+
+var data = new Array();
+
 function handleFileSelect(evt) {
     evt.stopPropagation();
     evt.preventDefault();
@@ -5,14 +11,25 @@ function handleFileSelect(evt) {
     var files = evt.dataTransfer.files; // FileList object.
 
     // files is a FileList of File objects. List some properties.
-    var output = [];
-    for (var i = 0, f; f = files[i]; i++) {
-        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                      f.size, ' bytes, last modified: ',
-                      f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                      '</li>');
+    var file = files[0]
+    var textType = /text.*/;
+
+    if (file.type.match(textType)) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+				a = reader.result;
+				var text = a.split("\n");
+                for(x=1;x<text.length;x++){
+                    var line = text[x].split(",");
+                    data.push(new Transition(line[0], line[1], line[2], line[3], line[4]));
+                    console.log(data[x-1]);
+                }
+            
+        }
+        reader.readAsText(file);	
+    } else {
+        window.alert("File not supported!");
     }
-    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 }
 
 function handleDragOver(evt) {
