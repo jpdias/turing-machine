@@ -6,7 +6,7 @@ function lexicalCheck()
 			var outputChildNodes = output.childNodes;
 			
 			
-			var lexicalCheckString = "Formal Definition Check: " + "<br>";
+			var lexicalCheckString = "Formal Definition Lexical Check: " + "<br>";
 			
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 			
@@ -160,11 +160,7 @@ function lexicalCheck()
 			
 			
 			
-			var lexicalCheckString = "Transitions Row 1 Check: " + "<br>";
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
-			
-			
+			/*
 			var currentStateInput = document.getElementById('currentState').value;
 			
 			var nextStateInput = document.getElementById('nextState').value;
@@ -174,96 +170,123 @@ function lexicalCheck()
 			var printSymbolInput = document.getElementById('printSymbol').value;
 			
 			var directionInput = document.getElementById('direction').value;
+			*/
 			
 			
-			var currentStateFound = false;
+			lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 			
-			var nextStateFound = false;
-			
-			for(var i = 0; i < statesSet.length; i++)
+			output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				
+			for(var j = 0; j < data.length; j++)
 			{
-				if(statesSet[i] == currentStateInput)
+				lexicalCheckString = "Row " + j + "<br>";
+			
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				
+				var currentStateInput = data[j].currentState;
+			
+				var nextStateInput = data[j].nextState;
+			
+				var scanSymbolInput = data[j].scanSymbol;
+			
+				var printSymbolInput = data[j].printSymbol;
+			
+				var directionInput = data[j].direction;
+			
+			
+				var currentStateFound = false;
+				
+				var nextStateFound = false;
+				
+				for(var i = 0; i < statesSet.length; i++)
 				{
-					currentStateFound = true;
+					if(statesSet[i] == currentStateInput)
+					{
+						currentStateFound = true;
+					}
+					
+					if(statesSet[i] == nextStateInput)
+					{
+						nextStateFound = true;
+					}
 				}
 				
-				if(statesSet[i] == nextStateInput)
+				if(currentStateInput.length > 0 && currentStateFound)
 				{
-					nextStateFound = true;
+					lexicalCheckString = "<font color=\"green\">" + "Current State OK!" + "</font><br>";
 				}
-			}
-			
-			if(currentStateInput.length > 0 && currentStateFound)
-			{
-				lexicalCheckString = "<font color=\"green\">" + "Current State OK!" + "</font><br>";
-			}
-			else
-			{
-				lexicalCheckString = "<font color=\"red\">" + "Current State Not OK!" + "</font><br>";
-			}
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
-			
-			if(nextStateInput.length > 0 && nextStateFound)
-			{
-				lexicalCheckString = "<font color=\"green\">" + "Next State OK!" + "</font><br>";
-			}
-			else
-			{
-				lexicalCheckString = "<font color=\"red\">" + "Next State Not OK!" + "</font><br>";
-			}
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
-			
-			
-			var scanSymbolFound = false;
-			
-			var printSymbolFound = false;
-			
-			for(var i = 0; i < alphabetSet.length; i++)
-			{
-				if(alphabetSet[i] == scanSymbolInput)
+				else
 				{
-					scanSymbolFound = true;
+					lexicalCheckString = "<font color=\"red\">" + "Current State Not OK!" + "</font><br>";
 				}
 				
-				if(alphabetSet[i] == printSymbolInput)
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				if(nextStateInput.length > 0 && nextStateFound)
 				{
-					printSymbolFound = true;
+					lexicalCheckString = "<font color=\"green\">" + "Next State OK!" + "</font><br>";
 				}
+				else
+				{
+					lexicalCheckString = "<font color=\"red\">" + "Next State Not OK!" + "</font><br>";
+				}
+				
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				var scanSymbolFound = false;
+				
+				var printSymbolFound = false;
+				
+				for(var i = 0; i < alphabetSet.length; i++)
+				{
+					if(alphabetSet[i] == scanSymbolInput)
+					{
+						scanSymbolFound = true;
+					}
+					
+					if(alphabetSet[i] == printSymbolInput)
+					{
+						printSymbolFound = true;
+					}
+				}
+				
+				if(scanSymbolInput.length > 0 && scanSymbolFound)
+				{
+					lexicalCheckString = "<font color=\"green\">" + "Scan Symbol OK!" + "</font><br>";
+				}
+				else
+				{
+					lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Not OK!" + "</font><br>";
+				}
+				
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				if(printSymbolInput.length > 0 && printSymbolFound)
+				{
+					lexicalCheckString = "<font color=\"green\">" + "Print Symbol OK!" + "</font><br>";
+				}
+				else
+				{
+					lexicalCheckString = "<font color=\"red\">" + "Print Symbol Not OK!" + "</font><br>";
+				}
+				
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
+				{
+					lexicalCheckString = "<font color=\"green\">" + "Direction OK!" + "</font><br>";
+				}
+				else
+				{
+					lexicalCheckString = "<font color=\"red\">" + "Direction Not OK!" + "</font><br>";
+				}
+				
+				output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+				
+				// processData();
 			}
-			
-			if(scanSymbolInput.length > 0 && scanSymbolFound)
-			{
-				lexicalCheckString = "<font color=\"green\">" + "Scan Symbol OK!" + "</font><br>";
-			}
-			else
-			{
-				lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Not OK!" + "</font><br>";
-			}
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
-			
-			if(printSymbolInput.length > 0 && printSymbolFound)
-			{
-				lexicalCheckString = "<font color=\"green\">" + "Print Symbol OK!" + "</font><br>";
-			}
-			else
-			{
-				lexicalCheckString = "<font color=\"red\">" + "Print Symbol Not OK!" + "</font><br>";
-			}
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
-			
-			if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
-			{
-				lexicalCheckString = "<font color=\"green\">" + "Direction OK!" + "</font><br>";
-			}
-			else
-			{
-				lexicalCheckString = "<font color=\"red\">" + "Direction Not OK!" + "</font><br>";
-			}
-			
-			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		}
           
