@@ -79,11 +79,15 @@
                   </tbody>
                 </table>
           </div>
-        <div class="col-md-12">
-            <div class="col-md-2"><br><br><button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button></div>
-            <div class="col-md-2"><br><br><button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button></div>
-            </div>
-        </div>
+		  <div class="col-md-2"><br><br><button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button></div>
+		</div>
+		  <div><br><h3>Output</h3></div>
+		  <div class="row">
+			<div class="col-md-12">
+				<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
+				</div>
+				<br><br>
+		</div>
       </div>
     </div>
     <script src="js/loadFile.js"></script>
@@ -91,11 +95,9 @@
 	<script type="text/javascript">
 		function cloneRow()
 		{
-			var row = document.getElementById("rowToClone"); // find row to copy
-			var table = document.getElementById("tableToModify"); // find table to append to
-			var clone = row.cloneNode(true); // copy children too
-			clone.id = "rowToClone"; // change id or other attributes/contents
-			table.appendChild(clone); // add new row to end of table
+			var rowToClone = document.getElementById("rowToClone");
+			
+			rowToClone.insertAdjacentHTML('beforeend', '<tbody id="rowToClone">'+'<tr align="center" valign="middle" ><td><input type="text" class="form-control input-sm" id="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" id="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" id="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" id="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" id="direction"></td></tr></tbody>');
 		}
             
     </script>
