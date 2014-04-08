@@ -188,7 +188,7 @@ function lexicalCheck()
 			
 			for(var j = 0; j < data.length; j++)
 			{
-				lexicalCheckString = "Row " + j + 1 + "<br>";
+				lexicalCheckString = "Row " + parseInt(j + 1) + "<br>";
 			
 				output.insertAdjacentHTML('beforeend', lexicalCheckString);
 				
