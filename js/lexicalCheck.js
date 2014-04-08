@@ -179,16 +179,16 @@ function lexicalCheck()
 				
 			if(data.length == 0)
 			{
-				for(var j = 0; j < currentStateInputs.length; j++)
+				for(var i = 0; i < currentStateInputs.length; i++)
 				{
-					data.push(new Transition(currentStateInputs[j], nextStateInputs[j], scanSymbolInputs[j], printSymbolInputs[j], directionInputs[j]));
+					data.push(new Transition(currentStateInputs[i], nextStateInputs[i], scanSymbolInputs[i], printSymbolInputs[i], directionInputs[i]));
 				}
 			}
 			
 			
 			for(var j = 0; j < data.length; j++)
 			{
-				lexicalCheckString = "Row " + j + "<br>";
+				lexicalCheckString = "Row " + j + 1 + "<br>";
 			
 				output.insertAdjacentHTML('beforeend', lexicalCheckString);
 				
