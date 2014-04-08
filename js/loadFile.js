@@ -19,10 +19,12 @@ function handleFileSelect(evt) {
         reader.onload = function(e) {
 				readerResult = reader.result;
 				var lines = readerResult.split("\r\n");
-                for(x=1;x<lines.length -1 ;x++){
+                for(x=1;x<lines.length ;x++){
                     var line = lines[x].split(",");
 					if(line.length!=5){
-						window.alert("Sintax error on line " + x + "\n\nWrong sequence of tokens." + "\nExpected to have 5 tokens but has " + line.length + ";"); 
+						document.getElementById('output').style.color = "Red";
+						document.getElementById('output').innerHTML="Syntax error on line: " + x + ". Wrong sequence of tokens, " + "expected to have 5 tokens but has " + line.length + "."; 
+						return;
 					}
                     data.push(new Transition(line[0], line[1], line[2], line[3], line[4]));
                 }
