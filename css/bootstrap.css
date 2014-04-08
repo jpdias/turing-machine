@@ -5,6 +5,17 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+#dropzone {
+border: 2px dashed #bbb;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+padding: 25px;
+text-align: center;
+font: 20pt bold 'Vollkorn';
+color: #bbb;
+}
+
 .bs-example {
 margin-left: 0;
 margin-right: 0;
@@ -14,17 +25,6 @@ border-color: #ddd;
 border-radius: 4px 4px 0 0;
 box-shadow: none;
 padding: 10px;
-}
-
-#drop_zone {
-border: 2px dashed #bbb;
--moz-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
-padding: 25px;
-text-align: center;
-font: 20pt bold 'Vollkorn';
-color: #bbb;
 }
 
 

@@ -1,105 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FEUP - Compilers -  Turing Machine</title>
+    <title>FEUP - Compilers - Turing Machine</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-        <h1>FEUP/Compilers -  Turing Machine</h1>
-      </div>
-        <div id="drop_zone">Drop file here (txt)</div>
-			<output id="list"></output>
-        <div><h3>Formal Definition</h3></div>
-      <br><div class="row">
-          <div class="col-md-6" style="width:585px;">
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="Q" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="statesSet" placeholder="Example: Q0,Q1"></input></div>
-              <div><br></br></div>
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="&Gamma;" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="alphabetSet" placeholder="Example: 0,1"></input></div>
-              <div><br></br></div>
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="b" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="blankSymbol" placeholder="Example: 0"></input></div>
-              <div><br></br></div>
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="&sum;" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="inputSymbols" placeholder="Example: 1"></input></div>
-          
-              <div><br></br></div>
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="q0" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="initialState" placeholder="Example: Q0"></input></div>
-              <div><br></br></div>
-                <div class="col-md-2"><input type="text" class="form-control" placeholder="F" disabled="true"></div>
-                <div class="col-md-10"><input type="text" class="form-control" id="finalStates" placeholder="Example: Q1"></input></div>	
-          </div>
-		  <div class="col-md-6" style="height:234px;overflow: auto;" >
-              <table class="table table-bordered table-condensed" id="tableToModify">
-                  <thead>
-                    <tr>
-                      <th>Current State</th>
-                        <th></th>
-                      <th>Next State</th>
-                        <th></th>
-                      <th>Scan Symbol</th>
-                        <th></th>
-                      <th>Print Symbol</th>
-                        <th></th>
-                      <th>Direction</th>
-                        <th><button type="button" class="btn btn-default btn-xs " onclick="cloneRow()">
-                            <span class="glyphicon glyphicon-plus"></span>
-							</button>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="rowToClone">
-                    <tr align="center" valign="middle" >
-                      <td><input type="text" class="form-control input-sm" id="currentState"></td>
-                      <td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td>
-                      <td><input type="text" class="form-control input-sm" id="nextState"></td>
-                      <td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td>
-                      <td><input type="text" class="form-control input-sm" id="scanSymbol"></td>
-                      <td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td>
-                      <td><input type="text" class="form-control input-sm" id="printSymbol"></td>
-                      <td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td>
-                      <td><input type="text" class="form-control input-sm" id="direction"></td>
-                    </tr>
-                  </tbody>
+        <div class="page-header">
+            <h1>FEUP/Compilers -  Turing Machine</h1>
+        </div>
+        <div id="dropzone">Drop file here (txt)</div>
+        <output id="list"></output>
+        <div>
+            <h3>Formal Definition</h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6" style="width:585px;">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Q" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="statesSet" placeholder="Example: Q0,Q1"></input>
+                </div>
+                <div>
+                    <br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="&Gamma;" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="alphabetSet" placeholder="Example: 0,1"></input>
+                </div>
+                <div>
+                    <br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="b" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="blankSymbol" placeholder="Example: 0"></input>
+                </div>
+                <div>
+                    <br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="&sum;" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputSymbols" placeholder="Example: 1"></input>
+                </div>
+
+                <div>
+                    <br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="q0" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="initialState" placeholder="Example: Q0"></input>
+                </div>
+                <div>
+                    <br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="F" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="finalStates" placeholder="Example: Q1"></input>
+                </div>
+            </div>
+            <div class="col-md-6" style="height:234px;overflow: auto;">
+                <table class="table table-bordered table-condensed" id="tableToModify">
+                    <thead>
+                        <tr>
+                            <th>Current State</th>
+                            <th></th>
+                            <th>Next State</th>
+                            <th></th>
+                            <th>Scan Symbol</th>
+                            <th></th>
+                            <th>Print Symbol</th>
+                            <th></th>
+                            <th>Direction</th>
+                            <th>
+                                <button type="button" class="btn btn-default btn-xs " onclick="cloneRow()">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="rowToClone">
+                        <tr align="center" valign="middle">
+                            <td>
+                                <input type="text" class="form-control input-sm" name="currentState">
+                            </td>
+                            <td>
+                                <h6><span class="glyphicon glyphicon-arrow-right"></span></h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" name="nextState">
+                            </td>
+                            <td>
+                                <h6> <span class="glyphicon glyphicon-flash"></span> </h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" name="scanSymbol">
+                            </td>
+                            <td>
+                                <h6> <span class="glyphicon glyphicon-minus"></span></h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" name="printSymbol">
+                            </td>
+                            <td>
+                                <h6> <span class="glyphicon glyphicon-transfer"></span> </h6>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control input-sm" name="direction">
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
-          </div>
-		  <div class="col-md-2"><br><br><button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button></div>
-		</div>
-		  <div><br><h3>Output</h3></div>
-		  <div class="row">
-			<div class="col-md-12">
-				<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
-				</div>
-				<br><br>
-		</div>
-      </div>
+            </div>
+            <div class="col-md-2">
+                <br>
+                <br>
+                <button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button>
+            </div>
+        </div>
+        <div>
+            <br>
+            <h3>Output</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
     </div>
     <script src="js/loadFile.js"></script>
-	<script src="js/lexicalCheck.js"></script>
-	<script type="text/javascript">
-		function cloneRow()
-		{
-			var rowToClone = document.getElementById("rowToClone");
-			
-			rowToClone.insertAdjacentHTML('beforeend', '<tbody id="rowToClone">'+'<tr align="center" valign="middle" ><td><input type="text" class="form-control input-sm" id="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" id="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" id="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" id="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" id="direction"></td></tr></tbody>');
-		}
-            
+    <script src="js/lexicalCheck.js"></script>
+    <script type="text/javascript">
+        function cloneRow() {
+            var rowToClone = document.getElementById("rowToClone");
+
+            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
+        }
     </script>
-  </body>
+</body>
+
 </html>

@@ -1,8 +1,9 @@
 function lexicalCheck()
 		{
-		
 			var output = document.getElementById('output');
-			output.innerHTML = "";
+			
+			// output.innerHTML = "";
+			
 			var outputChildNodes = output.childNodes;
 			
 			
@@ -160,17 +161,15 @@ function lexicalCheck()
 			
 			
 			
-			/*
-			var currentStateInput = document.getElementById('currentState').value;
+			var currentStateInputs = document.getElementsByName('currentState');
 			
-			var nextStateInput = document.getElementById('nextState').value;
+			var nextStateInputs = document.getElementsByName('nextState');
 			
-			var scanSymbolInput = document.getElementById('scanSymbol').value;
+			var scanSymbolInputs = document.getElementsByName('scanSymbol');
 			
-			var printSymbolInput = document.getElementById('printSymbol').value;
+			var printSymbolInputs = document.getElementsByName('printSymbol');
 			
-			var directionInput = document.getElementById('direction').value;
-			*/
+			var directionInputs = document.getElementsByName('direction');
 			
 			
 			lexicalCheckString = "Transitions Lexical Check:" + "<br>";
@@ -178,6 +177,15 @@ function lexicalCheck()
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 				
 				
+			if(data.length == 0)
+			{
+				for(var j = 0; j < currentStateInputs.length; j++)
+				{
+					data.push(new Transition(currentStateInputs[j], nextStateInputs[j], scanSymbolInputs[j], printSymbolInputs[j], directionInputs[j]));
+				}
+			}
+			
+			
 			for(var j = 0; j < data.length; j++)
 			{
 				lexicalCheckString = "Row " + j + "<br>";
