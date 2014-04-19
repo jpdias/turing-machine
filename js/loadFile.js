@@ -60,7 +60,7 @@ function handleFileSelect(evt) {
 			loadTransitionsTable();
         }
         reader.readAsText(file);
-        var dropZone = document.getElementById('drop_zone');
+        var dropZone = document.getElementById('dropzone');
         dropZone.innerHTML = "File upload successfully!";
     } else {
         window.alert("File not supported!");
