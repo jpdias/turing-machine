@@ -1,13 +1,22 @@
 // Formal Definition
-Q0,Q1
+Q0,Q1,Q2,Q3,Q4
+0,1,X,Y,B
+B
 0,1
-0
-1
 Q0
-Q1
+Q4
+
+//Input String
+000111
 
 // Transitions
-Q0,Q1,0,1,R
-Q0,Q1,0,1,L
-Q0,Q1,0,1,R
-Q0,Q1,0,1,L
+Q0,Q1,0,X,R
+Q0,Q3,Y,Y,R
+Q1,Q1,0,0,R
+Q1,Q2,1,Y,L
+Q1,Q1,Y,Y,R
+Q2,Q2,0,0,L
+Q2,Q0,X,X,R
+Q2,Q2,Y,Y,L
+Q3,Q3,Y,Y,R
+Q3,Q4,B,B,R

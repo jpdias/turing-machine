@@ -20,7 +20,7 @@ function handleFileSelect(evt) {
             readerResult = reader.result;
             var lines = readerResult.split("\r\n");
 
-            for (x = 1; x < 9; x++) {
+            for (x = 1; x < 12; x++) {
                 var line = lines[x].split(",");
                 if (x == 1) {
                     document.getElementById('statesSet').value = line;
@@ -39,7 +39,11 @@ function handleFileSelect(evt) {
                                 } else {
                                     if (x == 6) {
                                         document.getElementById('finalStates').value = line;
-                                    }
+                                    } else {
+										if(x == 9) {
+											document.getElementById('inputString').value = line;
+										}
+									}
                                 }
                             }
                         }
@@ -47,7 +51,7 @@ function handleFileSelect(evt) {
                 }
             }
 
-            for (x = 9; x < lines.length - 1; x++) {
+            for (x = 12; x < lines.length; x++) {
                 var line = lines[x].split(",");
                 if (line.length != 5) {
                     document.getElementById('output').style.color = "Red";

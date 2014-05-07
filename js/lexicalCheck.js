@@ -1,3 +1,15 @@
+var statesSet;
+var alphabetSet;
+var blankSymbolInput;
+var inputSymbols;
+var initialStateInput;
+var finalStates;
+var inputString;
+
+var turingMachine;
+var tape;
+
+
 function lexicalCheck()
 		{
 			var output = document.getElementById('output');
@@ -24,7 +36,7 @@ function lexicalCheck()
 			
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 			
-			var statesSet = statesSetInput.split(",");
+			statesSet = statesSetInput.split(",");
 			
 			
 			var alphabetSetInput = document.getElementById('alphabetSet').value;
@@ -40,10 +52,10 @@ function lexicalCheck()
 			
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 			
-			var alphabetSet = alphabetSetInput.split(",");
+			alphabetSet = alphabetSetInput.split(",");
 			
 			
-			var blankSymbolInput = document.getElementById('blankSymbol').value;
+			blankSymbolInput = document.getElementById('blankSymbol').value;
 			
 			var blankSymbolInputFound = false;
 			
@@ -69,7 +81,7 @@ function lexicalCheck()
 			
 			var inputSymbolsInput = document.getElementById('inputSymbols').value;
 			
-			var inputSymbols = inputSymbolsInput.split(",");
+			inputSymbols = inputSymbolsInput.split(",");
 			
 			var inputSymbolsInputFound = true;
 			
@@ -101,7 +113,7 @@ function lexicalCheck()
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
 			
 			
-			var initialStateInput = document.getElementById('initialState').value;
+			initialStateInput = document.getElementById('initialState').value;
 			
 			var initialStateInputFound = false;
 			
@@ -127,7 +139,7 @@ function lexicalCheck()
 			
 			var finalStatesInput = document.getElementById('finalStates').value;
 			
-			var finalStates = finalStatesInput.split(",");
+			finalStates = finalStatesInput.split(",");
 			
 			var finalStatesInputFound = true;
 			
@@ -154,6 +166,42 @@ function lexicalCheck()
 			else
 			{
 				lexicalCheckString = "<font color=\"red\">" + "Final States Not Ok." + "</font><br>";
+			}
+			
+			output.insertAdjacentHTML('beforeend', lexicalCheckString);
+			
+			
+			lexicalCheckString = "<br>" + "Input String Lexical Check: " + "<br>";
+			
+			output.insertAdjacentHTML('beforeend', lexicalCheckString);
+				
+			inputString = document.getElementById('inputString').value;
+			
+			var inputCharsFound = true;
+			
+			for(var i = 0; i < inputString.length; i++)
+			{
+				var inputCharFound = false;
+				
+				for(var j = 0; j < inputSymbols.length; j++)
+				{
+					if(inputSymbols[j] == inputString[i])
+					{
+						inputCharFound = true;
+					}
+				}
+				
+				if(inputCharFound == false)
+					inputCharsFound = false;
+			}
+			
+			if(inputString.length > 0 && inputCharsFound)
+			{
+				lexicalCheckString = "<font color=\"green\">" + "Input String Ok." + "</font><br><br>";
+			}
+			else
+			{
+				lexicalCheckString = "<font color=\"red\">" + "Input String Not Ok." + "</font><br><br>";
 			}
 			
 			output.insertAdjacentHTML('beforeend', lexicalCheckString);
@@ -295,6 +343,22 @@ function lexicalCheck()
 				
 				
 				// processData();
+								
+				
 			}
+			
+			loadDataToStructures();
 		}
+		
+function loadDataToStructures(){
+	//create Tape
+	tape= new Tape(alphabetSet, blankSymbolInput, 0, inputString);
+		
+	//tape.show();
+		
+	//Create Turing Machine
+	turingMachine= new TuringMachine(tape, data, initialStateInput, finalStates);
+		
+	//turingMachine.show();
+}
           

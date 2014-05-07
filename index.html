@@ -81,6 +81,19 @@
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="finalStates" placeholder="Example: Q1"></input>
                 </div>
+				
+				<div>
+                    <br></br>
+					<br></br>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" placeholder="Input" disabled="true">
+                </div>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputString"></input>
+                </div>
+				
+				
             </div>
             <div class="col-md-6" style="height:234px;overflow: auto;">
                 <table class="table table-bordered table-condensed" id="tableToModify">
@@ -135,10 +148,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-2">
+			<div>
+                <br></br>
+            </div>
+            <div class="col-md-2" style="overflow: auto;">
                 <br>
                 <br>
-                <button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button>
+				<button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button>
             </div>
         </div>
         <div>
@@ -148,6 +164,24 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+		<div>
+            <br>
+            <h3>Result</h3>
+        </div>
+        <div class="row">
+			<div class="col-md-2">
+                <br>
+                <br>
+                <button type="button" class="btn btn-default btn-md" onclick="runStep()">Step</button>
+				<button type="button" class="btn btn-default btn-md" onclick="run()">Run</button>
+            </div>
+            <div class="col-md-12">
+                <div class="bs-example" id="result" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
                 </div>
                 <br>
                 <br>
@@ -178,7 +212,21 @@
             rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
     </script>
+	
+	<script type="text/javascript">
+		
+	function runStep(){
+		turingMachine.step();
+	}
+	
+	function run(){
+		turingMachine.run();
+	}
+	
+	</script>
+	
 	<script src="js/visualization.js"></script>
+		
 </body>
 
 </html>
