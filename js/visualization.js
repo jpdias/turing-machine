@@ -1,73 +1,30 @@
-$(function(){
-$('#visualization').cytoscape({
+imported.src = 'js/vis.js';
+imported.src = 'js/vis.css';
+  // create an array with nodes
+  var nodes = [
+    {id: 1, label: 'Node 1'},
+    {id: 2, label: 'Node 2'},
+    {id: 3, label: 'Node 3'},
+    {id: 4, label: 'Node 4'},
+    {id: 5, label: 'Node 5'}
+  ];
 
-  style: cytoscape.stylesheet()
-    .selector('node')
-      .css({
-        'content': 'data(name)',
-        'text-valign': 'center',
-        'color': 'white',
-        'text-outline-width': 2,
-        'text-outline-color': '#888'
-      })
-    .selector('edge')
-      .css({
-        'target-arrow-shape': 'triangle'
-      })
-    .selector(':selected')
-      .css({
-        'background-color': 'black',
-        'line-color': 'black',
-        'target-arrow-color': 'black',
-        'source-arrow-color': 'black'
-      })
-    .selector('.faded')
-      .css({
-        'opacity': 0.25,
-        'text-opacity': 0
-      }),
-  
-  
-  elements: {
-    nodes: [
-      { data: { id: 'j', name: 'Jerry' } },
-      { data: { id: 'e', name: 'Elaine' } },
-      { data: { id: 'k', name: 'Kramer' } },
-      { data: { id: 'g', name: 'George' } }
-    ],
-    edges: [
-      { data: { source: 'j', target: 'e' } },
-      { data: { source: 'j', target: 'k' } },
-      { data: { source: 'j', target: 'g' } },
-      { data: { source: 'e', target: 'j' } },
-      { data: { source: 'e', target: 'k' } },
-      { data: { source: 'k', target: 'j' } },
-      { data: { source: 'k', target: 'e' } },
-      { data: { source: 'k', target: 'g' } },
-      { data: { source: 'g', target: 'j' } }
-    ]
-  },
+  // create an array with edges
+  var edges = [
+    {from: 1, to: 2,label:'lalalalalala'},
+    {from: 1, to: 3},
+    {from: 2, to: 4},
+    {from: 2, to: 5}
+  ];
 
-  ready: function(){
-    window.cy = this;
+  // create a graph
+  var container = document.getElementById('visualization');
+  var data= {
+    nodes: nodes,
+    edges: edges,
+  };
+  var options = {
     
-    
-    cy.elements().unselectify();
-    
-    cy.on('tap', 'node', function(e){
-      var node = e.cyTarget; 
-      var neighborhood = node.neighborhood().add(node);
-      
-      cy.elements().addClass('faded');
-      neighborhood.removeClass('faded');
-    });
-    
-    cy.on('tap', function(e){
-      if( e.cyTarget === cy ){
-        cy.elements().removeClass('faded');
-      }
-    });
-  }
-});
-
-}); // on dom ready
+    height: '750px'
+  };
+  var graph = new vis.Graph(container, data, options);
