@@ -10,6 +10,15 @@ var turingMachine;
 var tape;
 
 
+var error = false;
+
+var lexicalCheckString = "Formal Definition Lexical Check: " + "<br>";
+	
+var lexicalCheckErrorsString = "";
+
+var lexicalCheckRunned = false;
+
+
 function lexicalCheck()
 {
 	var output = document.getElementById('output');
@@ -19,9 +28,7 @@ function lexicalCheck()
 	var outputChildNodes = output.childNodes;
 	
 	
-	var lexicalCheckString = "Formal Definition Lexical Check: " + "<br>";
-	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
@@ -32,9 +39,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "States Set Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "States Set Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	statesSet = statesSetInput.split(",");
 	
@@ -48,9 +59,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Alphabet Set Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Alphabet Set Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	alphabetSet = alphabetSetInput.split(",");
 	
@@ -74,9 +89,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Blank Symbol Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Blank Symbol Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	var inputSymbolsInput = document.getElementById('inputSymbols').value;
@@ -108,9 +127,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Input Symbols Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input Symbols Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	initialStateInput = document.getElementById('initialState').value;
@@ -132,9 +155,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Initial State Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "Initial State Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
@@ -166,14 +193,18 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Final States Not Ok." + "</font><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "Final States Not Ok." + "</font><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	lexicalCheckString = "<br>" + "Input String Lexical Check: " + "<br>";
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 	inputString = document.getElementById('inputString').value;
 	
@@ -202,9 +233,13 @@ function lexicalCheck()
 	else
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Input String Not Ok." + "</font><br><br>";
+		
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "Input String Not Ok." + "</font><br><br>";
+		
+		error = true;
 	}
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	
@@ -222,7 +257,7 @@ function lexicalCheck()
 	
 	lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 	
-	output.insertAdjacentHTML('beforeend', lexicalCheckString);
+	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		
 	if(data.length == 0)
@@ -238,7 +273,7 @@ function lexicalCheck()
 	{
 		lexicalCheckString = "Row " + parseInt(j + 1) + "<br>";
 	
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		
 		var currentStateInput = data[j].currentState;
@@ -276,9 +311,11 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Current State Not Ok." + "</font><br>";
+			
+			error = true;
 		}
 		
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		if(nextStateInput.length > 0 && nextStateFound)
 		{
@@ -287,9 +324,13 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Next State Not Ok." + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Next State Not Ok." + "</font><br>";
+			
+			error = true;
 		}
 		
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		var scanSymbolFound = false;
 		
@@ -315,9 +356,13 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Not Ok." + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Not Ok." + "</font><br>";
+			
+			error = true;
 		}
 		
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		if(printSymbolInput.length > 0 && printSymbolFound)
 		{
@@ -326,9 +371,13 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Print Symbol Not Ok." + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print Symbol Not Ok." + "</font><br>";
+			
+			error = true;
 		}
 		
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
 		{
@@ -337,21 +386,44 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Direction Not Ok." + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction Not Ok." + "</font><br>";
+			
+			error = true;
 		}
 		
-		output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
+		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		// processData();
 	}
 	
-	addFinalNodes(finalStates);
+	if(error == false)
+	{
+		addFinalNodes(finalStates);
+		
+		addNodes(statesSet);
+		
+		loadDataToStructures();
+		
+		createGraphVisualization();
+		
+		
+		output.innerHTML = "";
+		
+		lexicalCheckOkString = "<font color=\"green\">" + "Lexical Check Ok." + "</font><br>";
+		
+		lexicalCheckOkString = lexicalCheckOkString + "<br>" + "Graph visualization created." + "<br>";
+		
+		
+		output.insertAdjacentHTML('beforeend', lexicalCheckOkString);
+	}
+	else
+	{
+		output.insertAdjacentHTML('beforeend', lexicalCheckErrorsString);
+	}
 	
-	addNodes(statesSet);
 	
-	loadDataToStructures();
-	
-	createGraphVisualization();
+	lexicalCheckRunned = true;
 }
 		
 function loadDataToStructures(){

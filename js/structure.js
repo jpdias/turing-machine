@@ -69,7 +69,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.currentState= initialState;
 	this.stepNumber= 0;
 	this.step= function(){
-			
+	
 		stepReturn = 2;
 		
 		var stepResult = document.getElementById('output');
@@ -172,7 +172,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			{
 				turingMachine.step();
 			}
-		}, 1000);
+		}, 750);
 	}
 	this.show= function(){
 		document.write("tape... <br>");

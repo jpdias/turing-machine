@@ -233,32 +233,50 @@
 	
 	function runStep(){
 	
-		if(stepReturn == 2)
+		var output = document.getElementById('output');
+		
+		
+		if(lexicalCheckRunned == false)
 		{
-			if(turingMachine.stepNumber == 0)
+			output.insertAdjacentHTML('beforeend', "Run <i>Lexical check</i> first!<br>");
+		}
+		else
+		{
+			if(stepReturn == 2)
+			{
+				if(turingMachine.stepNumber == 0)
+				{
+					output.innerHTML = "";
+					
+					output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
+				}
+				
+				turingMachine.step();
+			}
+		}
+		
+	}
+	
+	function run(){
+		var output = document.getElementById('output');
+		
+		
+		if(lexicalCheckRunned == false)
+		{
+			output.insertAdjacentHTML('beforeend', "Run <i>Lexical check</i> first!<br>");
+		}
+		else
+		{
+			if(stepReturn == 2)
 			{
 				var output = document.getElementById('output');
 				
 				output.innerHTML = "";
 				
 				output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
+			
+				turingMachine.run();
 			}
-			
-			turingMachine.step();
-		}
-		
-	}
-	
-	function run(){
-		if(stepReturn == 2)
-		{
-			var output = document.getElementById('output');
-			
-			output.innerHTML = "";
-			
-			output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
-		
-			turingMachine.run();
 		}
 	}
 	

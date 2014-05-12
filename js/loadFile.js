@@ -11,7 +11,7 @@ function handleFileSelect(evt) {
     var files = evt.dataTransfer.files; // FileList object.
 
     // files is a FileList of File objects. List some properties.
-    var file = files[0]
+    var file = files[0];
     var textType = /text.*/;
 
     if (file.type.match(textType)) {
