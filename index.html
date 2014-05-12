@@ -87,14 +87,6 @@
                     <br></br>
 					<br></br>
                 </div>
-                <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="Input" disabled="true">
-                </div>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="inputString"></input>
-                </div>
-				
-				
             </div>
             <div class="col-md-6" style="height:234px;overflow: auto;">
                 <table class="table table-bordered table-condensed" id="tableToModify">
@@ -149,56 +141,43 @@
                     </tbody>
                 </table>
             </div>
-			<div>
-                <br></br>
-            </div>
-            <div class="col-md-2" style="overflow: auto;">
-                <br>
-                <br>
-				<button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button>
-            </div>
         </div>
-        <div>
+		
+		<div class="col-md-12">
+			<button type="button" class="btn btn-default btn-md" onclick="lexicalCheck()">Lexical Check</button>
+		</div>
+		
+		<div class="col-md-12">
+			<br>
+			<br>
+			<br>
+			<div class="col-md-2">
+				<input type="text" class="form-control" placeholder="Input" disabled="true">
+			</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="inputString"></input>
+			</div>
+			<div class="col-md-2">
+				<button type="button" class="btn btn-default btn-md" onclick="runStep()">Step</button>
+				<button type="button" class="btn btn-default btn-md" onclick="run()">Run</button>
+			</div>
+		</div>
+		
+		<div class="col-md-12">
             <br>
             <h3>Output</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
+			<div class="col-md-6">
+                <div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:400px;overflow: auto;">
                 </div>
-                <br>
-                <br>
+				<br>
+				<br>
             </div>
-        </div>
-		<div>
-            <br>
-            <h3>Result</h3>
-        </div>
-        <div class="row">
-			<div class="col-md-2">
-                <br>
-                <br>
-                <button type="button" class="btn btn-default btn-md" onclick="runStep()">Step</button>
-				<button type="button" class="btn btn-default btn-md" onclick="run()">Run</button>
-            </div>
-            <div class="col-md-12">
-                <div class="bs-example" id="result" style="border-style:solid;border-width:1px;height:234px;overflow: auto;">
+			<div class="col-md-6">
+                <div class="bs-example" id="visualization" style="border-style:solid;border-width:1px;height:400px;overflow: auto;">
                 </div>
-                <br>
-                <br>
-            </div>
-        </div>
-		<div>
-            <br>
-            <h3>Visualization</h3>
-        </div>
-       <div class="row">
-            <div class="col-md-12">
-                <div class="bs-example" id="visualization" style="border-style:solid;border-width:1px;height:800px;overflow: auto;">
-                </div>
-                <br>
-                <br>
-            </div>
+				<br>
+				<br>
+			</div>
         </div>
     </div>
 	<script src="js/jquery.js"></script>
@@ -218,10 +197,22 @@
 	<script type="text/javascript">
 		
 	function runStep(){
+		var output = document.getElementById('output');
+		
+		output.innerHTML = "";
+		
+		output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
+		
 		turingMachine.step();
 	}
 	
 	function run(){
+		var output = document.getElementById('output');
+		
+		output.innerHTML = "";
+		
+		output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
+	
 		turingMachine.run();
 	}
 	

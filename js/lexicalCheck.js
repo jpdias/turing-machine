@@ -229,11 +229,7 @@ function lexicalCheck()
 	{
 		for(var i = 0; i < currentStateInputs.length; i++)
 		{
-			data.push(new Transition(currentStateInputs[i], nextStateInputs[i], scanSymbolInputs[i], printSymbolInputs[i], directionInputs[i]));
-			
-			alert("A");
-			
-			addNode(currentStateInputs[i], currentStateInputs[i]);
+			//
 		}
 	}
 	
@@ -347,9 +343,11 @@ function lexicalCheck()
 		
 		
 		// processData();
-						
-		
 	}
+	
+	addFinalNodes(finalStates);
+	
+	addNodes(statesSet);
 	
 	loadDataToStructures();
 	

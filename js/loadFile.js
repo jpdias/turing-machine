@@ -50,15 +50,21 @@ function handleFileSelect(evt) {
                     }
                 }
             }
-
-            for (x = 12; x < lines.length; x++) {
-                var line = lines[x].split(",");
+			
+			var e = 1;
+			
+			for (x = 12; x < lines.length; x++) {
+				var line = lines[x].split(",");
                 if (line.length != 5) {
                     document.getElementById('output').style.color = "Red";
                     document.getElementById('output').innerHTML = "Syntax error on line: " + x + ". Wrong sequence of tokens, " + "expected to have 5 tokens but has " + line.length + ".";
                     return;
                 }
                 data.push(new Transition(line[0], line[1], line[2], line[3], line[4]));
+				
+				addEdge(e.toString(), line[0], line[1], line[2] + " / " + line[3] + " , " + line[4]);
+				
+				e++;
             }
             
 			loadTransitionsTable();

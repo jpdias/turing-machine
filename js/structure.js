@@ -1,3 +1,5 @@
+var stepReturn = 2;
+
 String.prototype.replaceAt=function(index, character) 
 {
 	return this.substr(0, index) + character + this.substr(index+character.length);
@@ -68,7 +70,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.stepNumber= 0;
 	this.step= function(){
 			
-		var stepResult = document.getElementById('result');
+		var stepResult = document.getElementById('output');
 		
 		var stepString= "";
 		for(var k= 0; k < (this.tape).tapeContent.length; k++)
@@ -123,7 +125,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				{
 					stepString += "<br><br><font color=\"green\">" + "SUCCESS!!!" + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
-					return 1;
+					colorNode(turingMachine.currentState);
+					stepReturn = 1;
 				}
 			}
 			
@@ -141,21 +144,33 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		{
 			stepString += "<br><br><font color=\"red\">" + "FAIL!!!" + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
-			return 0;
+			colorNode(turingMachine.currentState);
+			stepReturn = 0;
 		}
 		
-		return 2;
+		
+		colorNode(turingMachine.currentState);
+		
+		
+		stepReturn = 2;
 		
 		
 	}
 	this.runNsteps= function(numberOfSteps){
 	}
 	this.run= function(){
-		var returnValue;
-		do
+		
+		var steper = setInterval(function ()
 		{
-			returnValue= this.step();
-		}while(returnValue == 2);
+			if (stepReturn != 2)
+			{
+				clearInterval(steper);
+			}
+			else
+			{
+				turingMachine.step();
+			}
+		}, 2000);
 	}
 	this.show= function(){
 		document.write("tape... <br>");
