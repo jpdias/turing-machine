@@ -1,30 +1,58 @@
-imported.src = 'js/vis.js';
-imported.src = 'js/vis.css';
-  // create an array with nodes
-  var nodes = [
-    {id: 1, label: 'Node 1'},
-    {id: 2, label: 'Node 2'},
-    {id: 3, label: 'Node 3'},
-    {id: 4, label: 'Node 4'},
-    {id: 5, label: 'Node 5'}
-  ];
+var nodes, edges;
 
-  // create an array with edges
-  var edges = [
-    {from: 1, to: 2,label:'lalalalalala'},
-    {from: 1, to: 3},
-    {from: 2, to: 4},
-    {from: 2, to: 5}
-  ];
+function addNode(idValue, labelValue) 
+{
+	try
+	{
+		nodes.add
+		(
+		{
+		id: idValue;
+		label: labelValue;
+		}
+		);
+	}
+	catch (err)
+	{
+		alert(err);
+	}
+}
 
-  // create a graph
-  var container = document.getElementById('visualization');
-  var data= {
-    nodes: nodes,
-    edges: edges,
-  };
-  var options = {
-    
-    height: '750px'
-  };
-  var graph = new vis.Graph(container, data, options);
+function addEdge(idValue, fromValue, toValue, labelValue) 
+{
+	try
+	{
+		edges.add
+		(
+		{
+		id: idValue;
+		from: fromValue;
+		to: toValue;
+		label: labelValue;
+		}
+		);
+	}
+	catch (err)
+	{
+		alert(err);
+	}
+}
+
+function createGraphVisualization()
+{
+	// create a graph
+	var container = document.getElementById('visualization');
+	
+	var data =
+	{
+		nodes: nodes,
+		edges: edges,
+	};
+	
+	var options =
+	{
+		height: '750px'
+	};
+
+	var graph = new vis.Graph(container, data, options);
+}
