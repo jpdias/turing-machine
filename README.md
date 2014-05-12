@@ -1,6 +1,19 @@
 Compiladores
 ====
 
+COMP 2º CheckPoint
+
+->Implementaçao da capacidade de executar a máquina de turing
+->Demonstração do grafo de transições
+	->Mostragem do passo de execução no grafo 
+->Apresentação de algumas estatisticas (mostragem de número de passos)
+->melhoramentos a linguagem e a sua análise (lexical,sintatica,semantica)
+->Debbuger
+	-> Mostragem step-to-step
+->Adicionados alguns menus de ajuda
+
+
+
 Boa noite professor,
 
 De acordo com o solicitado, segue de seguida todas as funcionalidades implementadas (algumas parcialmente) 
