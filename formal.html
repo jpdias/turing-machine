@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title"><i>What is Turing Machine?</i></h4>
+</div>
+	<div class="modal-body">
+		<div class="te">
+
+A Turing machine is formally defined (one-tape) as a 7-tuple M= \langle Q, \Gamma, b, \Sigma, \delta, q_0, F \rangle where
+
+    Q is a finite, non-empty set of states
+    \Gamma is a finite, non-empty set of the tape alphabet/symbols
+    b \in \Gamma is the blank symbol (the only symbol allowed to occur on the tape infinitely often at any step during the computation)
+    \Sigma\subseteq\Gamma\setminus\{b\} is the set of input symbols
+    q_0 \in Q is the initial state
+    F \subseteq Q is the set of final or accepting states.
+    \delta: Q \setminus F \times \Gamma \rightarrow Q \times \Gamma \times \{L,R\} is a partial function called the transition function, where L is left shift, R is right shift. (A relatively uncommon variant allows "no shift", say N, as a third element of the latter set.)
+
+Anything that operates according to these specifications is a Turing machine.
+
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+</div>

@@ -6,7 +6,15 @@
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
-
+.btn-circle {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 30px;
+  /*line-height: 1.42;*/
+  /*border-radius: 15px;*/
+}
 
 #dropzone {
 border: 2px dashed #bbb;

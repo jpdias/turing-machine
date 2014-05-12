@@ -8,24 +8,43 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FEUP - Compilers - Turing Machine</title>
+    <title>FEUP - Compilers - Turing Machine </title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-	 <link href="css/vis.css" rel="stylesheet">
+	<link href="css/vis.css" rel="stylesheet">
 
 </head>
 
 <body>
-
+	<!-- Modal -->
+	<div class="modal fade" id="modal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
     <!-- Begin page content -->
     <div class="container">
         <div class="page-header">
-            <h1>FEUP/Compilers -  Turing Machine</h1>
+            <h1>FEUP/Compilers -  Turing Machine <a class="btn-circle" data-toggle="modal" href="help.html" data-target="#modal"><i class="glyphicon glyphicon-question-sign"></i></a></h1>
         </div>
         <div id="dropzone">Drop file here (txt)</div>
         <output id="list"></output>
-        <div>
-            <h3>Formal Definition</h3>
+        <div class="col-md-6">
+            <h3>Formal Definition 
+			<a class="" data-toggle="modal" href="formal.html" data-target="#modal">
+			<i class="glyphicon glyphicon-question-sign"></i></a>
+			</h3>
+        </div>
+				<div class="col-md-6">
+            <h3>State Transitions  
+			<a class="" data-toggle="modal" href="help.html" data-target="#modal">
+			<i class="glyphicon glyphicon-question-sign"></i></a>
+			</h3>
         </div>
         <br>
         <div class="row">
@@ -88,6 +107,7 @@
 					<br></br>
                 </div>
             </div>
+
             <div class="col-md-6" style="height:234px;overflow: auto;">
                 <table class="table table-bordered table-condensed" id="tableToModify">
                     <thead>
@@ -185,6 +205,7 @@
     <script src="js/lexicalCheck.js"></script>
 	<script src="js/vis.js"></script>
 	<script src="js/visualization.js"></script>
+	<script src="js/bootstrap.js"></script>
 	
     <script type="text/javascript">
         function cloneRow() {
