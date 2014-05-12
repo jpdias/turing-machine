@@ -213,11 +213,6 @@
 
             rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
-		$('a.btn').on('click', function(e) {
-			e.preventDefault();
-			var url = $(this).attr('href');
-			$('.modal-body').html('<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" src="' + url + '"></iframe>');
-		});​
     </script>
 	
 	<script type="text/javascript">
