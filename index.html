@@ -221,24 +221,37 @@
 	$(document).on('hidden.bs.modal', function (e) {
 		$(e.target).removeData('bs.modal');
 	});
+	
+	
 	function runStep(){
-		var output = document.getElementById('output');
+	
+		if(stepReturn == 2)
+		{
+			if(turingMachine.stepNumber == 0)
+			{
+				var output = document.getElementById('output');
+				
+				output.innerHTML = "";
+				
+				output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
+			}
+			
+			turingMachine.step();
+		}
 		
-		output.innerHTML = "";
-		
-		output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
-		
-		turingMachine.step();
 	}
 	
 	function run(){
-		var output = document.getElementById('output');
+		if(stepReturn == 2)
+		{
+			var output = document.getElementById('output');
+			
+			output.innerHTML = "";
+			
+			output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
 		
-		output.innerHTML = "";
-		
-		output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
-	
-		turingMachine.run();
+			turingMachine.run();
+		}
 	}
 	
 	</script>

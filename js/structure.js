@@ -123,9 +123,11 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			//check if a final state have been reached.
 			for(var j= 0; j < (this.finalStates).length; j++)
 			{
-				if(finalStates[j] == nextState)
+				if(finalStates[j] == this.currentState)
 				{
-					stepString += "<br><br><font color=\"green\">" + "SUCCESS!!!" + "</font><br>";
+					
+					stepString= "<br><br><font color=\"green\">" + "SUCCESS!" + "</font><br>";
+					stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
 					colorNode(turingMachine.currentState);
 					stepReturn = 1;
@@ -144,7 +146,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		}
 		else
 		{
-			stepString += "<br><br><font color=\"red\">" + "FAIL!!!" + "</font><br>";
+			stepString = "<br><br><font color=\"red\">" + "FAIL!" + "</font><br>";
+			stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
 			colorNode(turingMachine.currentState);
 			stepReturn = 0;
