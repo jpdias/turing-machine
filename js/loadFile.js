@@ -18,55 +18,126 @@ function handleFileSelect(evt) {
         var reader = new FileReader();
         reader.onload = function (e) {
             readerResult = reader.result;
+			
+			//read file line by line
             var lines = readerResult.split("\r\n");
-
-            for (x = 1; x < 12; x++) {
-                var line = lines[x].split(",");
-                if (x == 1) {
-                    document.getElementById('statesSet').value = line;
-                } else {
-                    if (x == 2) {
-                        document.getElementById('alphabetSet').value = line;
-                    } else {
-                        if (x == 3) {
-                            document.getElementById('blankSymbol').value = line;
-                        } else {
-                            if (x == 4) {
-                                document.getElementById('inputSymbols').value = line;
-                            } else {
-                                if (x == 5) {
-                                    document.getElementById('initialState').value = line;
-                                } else {
-                                    if (x == 6) {
-                                        document.getElementById('finalStates').value = line;
-                                    } else {
-										if(x == 9) {
-											document.getElementById('inputString').value = line;
-										}
-									}
-                                }
-                            }
-                        }
-                    }
-                }
-            }
 			
-			var e = 1;
 			
-			for (x = 12; x < lines.length; x++) {
-				var line = lines[x].split(",");
-                if (line.length != 5) {
-                    document.getElementById('output').style.color = "Red";
-                    document.getElementById('output').innerHTML = "Syntax error on line: " + x + ". Wrong sequence of tokens, " + "expected to have 5 tokens but has " + line.length + ".";
-                    return;
-                }
-                data.push(new Transition(line[0], line[1], line[2], line[3], line[4]));
+			
+			var i= 0;
+			while(i < lines.length)
+			{
+				//transitions Table		
+				if(lines[i] == "transitions.start")
+				{
+					var e = 1;
+					i++;
+					while(lines[i] != "transitions.end")
+					{
+						var line= lines[i].split("=");
+						line[0]= line[0].replace("(", "").replace(")", "");
+						line[1]= line[1].replace("(", "").replace(")", "");
+						var current= line[0].split(",");
+						var nextAux= line[1].split(";");
+						var next= nextAux[0].split(",");
+						
+						if (current.length != 2) {
+							document.getElementById('output').style.color = "Red";
+							document.getElementById('output').innerHTML = "Syntax error on line: " + i + ". Wrong sequence of tokens, " + "expected to have 2 tokens but has " + current.length + ".";
+							return;
+						}
+						
+						if (next.length != 3) {
+							document.getElementById('output').style.color = "Red";
+							document.getElementById('output').innerHTML = "Syntax error on line: " + i + ". Wrong sequence of tokens, " + "expected to have 3 tokens but has " + current.length + ".";
+							return;
+						}
+						
+						
+						var state= current[0];
+						var symbol= current[1];
+						var nextState= next[0];
+						var nextSymbol= next[1];
+						var direction= next[2];
+						
+						data.push(new Transition(state, nextState, symbol, nextSymbol, direction));
+						
+						addEdge(e.toString(), state, nextState, symbol + " / " + nextSymbol + " , " + direction);
 				
-				addEdge(e.toString(), line[0], line[1], line[2] + " / " + line[3] + " , " + line[4]);
+						e++;
+						
+						i++;
+					}
+				}
 				
-				e++;
-            }
-            
+				//Formal Definition
+				if(lines[i] == "formalDefinition.start")
+				{
+					i++;
+					while(lines[i] != "formalDefinition.end")
+					{
+						var variableDeclaration= lines[i].split("=");
+						var variableName= variableDeclaration[0];
+						var variableContent= variableDeclaration[1].split(";");
+						
+						if(variableName == "States")
+						{
+							document.getElementById('statesSet').value = variableContent[0];
+						}
+						else if(variableName == "Alphabet")
+						{
+							document.getElementById('alphabetSet').value = variableContent[0];
+						}
+						else if(variableName == "BlankSymbol")
+						{
+							document.getElementById('blankSymbol').value = variableContent[0];
+						}
+						else if(variableName == "TapeAlphabet")
+						{
+							document.getElementById('inputSymbols').value = variableContent[0];
+						}
+						else if(variableName == "InitialState")
+						{
+							document.getElementById('initialState').value = variableContent[0];
+						}
+						else if(variableName == "FinalStates")
+						{
+							document.getElementById('finalStates').value = variableContent[0];
+						}
+						else
+						{
+						}
+												
+						i++;
+					}
+				}
+				
+				if(lines[i] == "input.start")
+				{
+					i++;
+					while(lines[i] != "input.end")
+					{
+					
+						var variableDeclaration= lines[i].split("=");
+						var variableName= variableDeclaration[0];
+						
+						if(variableName == "Input")
+						{
+							var inputContent= variableDeclaration[1].split(";");
+							document.getElementById('inputString').value = inputContent[0];
+						}
+						else
+						{
+						}
+						
+						i++;
+					}
+				}
+				
+				
+				i++;
+			}
+		
 			loadTransitionsTable();
         }
         reader.readAsText(file);
