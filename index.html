@@ -163,9 +163,15 @@
                     </tbody>
                 </table>
             </div>
-			<div class="col-md-12" style="padding-left:2.5%">
-				<button type="button" class="btn btn-warning btn-md" onclick="lexicalCheck()"><i class="glyphicon glyphicon-fire"></i></a> Lexical Check</button>
-				<br><br>
+			
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<button type="button" class="btn btn-warning btn-md" onclick="lexicalCheck()"><i class="glyphicon glyphicon-fire"></i></a> Lexical Check</button>
+				</div>
+				<div class="col-md-6" style="float:right;text-align:right;">
+				<button type="button" class="btn btn-info btn-md" onclick="loadLocal('testFile.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 1</button>
+				<button type="button" class="btn btn-info btn-md" onclick="loadLocal('testFile2.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 2</button>
+				</div>
 			</div>
 		
 		
@@ -211,7 +217,7 @@
 	<script src="js/vis.js"></script>
 	<script src="js/visualization.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
+	<script src="js/simulateFile.js"></script>
     <script type="text/javascript">
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
@@ -224,7 +230,6 @@
 	$(document).on('hidden.bs.modal', function (e) {
 		$(e.target).removeData('bs.modal');
 	});
-	
 	
 	function runStep(){
 	
