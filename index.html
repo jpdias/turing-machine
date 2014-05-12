@@ -216,7 +216,9 @@
     </script>
 	
 	<script type="text/javascript">
-		
+	$(document).on('hidden.bs.modal', function (e) {
+		$(e.target).removeData('bs.modal');
+	});
 	function runStep(){
 		var output = document.getElementById('output');
 		
