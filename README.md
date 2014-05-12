@@ -12,6 +12,10 @@ COMP 2º CheckPoint
 	-> Mostragem step-to-step
 ->Adicionados alguns menus de ajuda
 
+A fazer:
+Melhorar e acrescentar mais opções de debug
+Animação grafica da fita
+Melhorias gerais e correçao de bugs
 
 
 Boa noite professor,
