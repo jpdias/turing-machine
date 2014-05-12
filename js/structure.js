@@ -70,6 +70,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.stepNumber= 0;
 	this.step= function(){
 			
+		stepReturn = 2;
+		
 		var stepResult = document.getElementById('output');
 		
 		var stepString= "";
@@ -152,9 +154,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		colorNode(turingMachine.currentState);
 		
 		
-		stepReturn = 2;
-		
-		
 	}
 	this.runNsteps= function(numberOfSteps){
 	}
@@ -170,7 +169,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			{
 				turingMachine.step();
 			}
-		}, 2000);
+		}, 1000);
 	}
 	this.show= function(){
 		document.write("tape... <br>");
