@@ -15,7 +15,6 @@
   /*line-height: 1.42;*/
   /*border-radius: 15px;*/
 }
-
 #dropzone {
 border: 2px dashed #bbb;
 -moz-border-radius: 5px;
@@ -50,6 +49,7 @@ td {
 }
 body {
   margin: 0;
+  background-color: #FCFCFC;
 }
 article,
 aside,
@@ -315,7 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+ /* background-color: #fff;*/
 }
 input,
 button,
