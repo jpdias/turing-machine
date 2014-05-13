@@ -8,7 +8,7 @@ function loadLocal(arg) {
 	$(function() {
             $.get(arg, function(dados) {
                 readerResult = dados;
-			
+			http://pastebin.com/raw.php?i=ngyiYie9
 			//read file line by line
             var lines = readerResult.split("\r\n");
 			
