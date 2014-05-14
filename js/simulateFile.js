@@ -8,11 +8,11 @@ function loadLocal(arg) {
 	$(function() {
             $.get(arg, function(dados) {
                 readerResult = dados;
-			http://pastebin.com/raw.php?i=ngyiYie9
+		
 			//read file line by line
-            var lines = readerResult.split("\r\n");
+            var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
 			
-			
+			//console.log(lines[0]);
 			
 			var i= 0;
 			while(i < lines.length)
