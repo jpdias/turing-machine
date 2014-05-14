@@ -22,7 +22,7 @@ function handleFileSelect(evt) {
 			//read file line by line
             var lines = readerResult.split("\r\n");
 			
-			
+			$('#editor').val(readerResult); 
 			
 			var i= 0;
 			while(i < lines.length)

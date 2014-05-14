@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
 	<!-- Modal -->
 	<div class="modal fade" id="modal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -31,15 +32,37 @@
     <div class="container">
 	<div class="page-header col-md-12">
         <div class="col-md-8">
-            <h1>FEUP/EIC0028 Compilers - Turing Machine <a class="btn-circle" data-toggle="modal" href="help.html" data-target="#modal"><i class="glyphicon glyphicon-question-sign"></i></a></h1>
+            <h1>FEUP / Compilers - Turing Machine<a class="btn-circle" data-toggle="modal" href="help.html" data-target="#modal"><i class="glyphicon glyphicon-question-sign"></i></a></h1>
         </div>
 		<div class="col-md-4" style="text-align:right;">
 			<h1><a class="btn btn-info" data-toggle="modal" href="about.html" data-target="#modal">About Us <i class="glyphicon glyphicon-question-sign"></i></a></h1>
         </div>
 	</div>
-	<div class="col-md-12">
+	<div class="col-md-12" style="margin-bottom:15px;">
+
+	<div class="col-md-8">
         <div id="dropzone">Drop file here (txt)</div>
         <output id="list"></output>
+	</div>
+	<div class="col-md-4" style="align:center;text-align:center;">
+			<button type="button" class="btn btn-warning btn-md" onclick="loadLocal('testFile.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 1</button>
+			<button type="button" class="btn btn-warning btn-md" onclick="loadLocal('testFile2.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 2</button>
+	</div>
+	</div>
+			 <div class="col-md-12">
+            <h3>Code Editor <button  id="ch" type="button" class="btn btn-success btn-sm" onclick="openEditor()">Open</button>
+	</h3>
+	</div>
+	<div id="editorW" style="display:none;">
+	<div class="col-md-12">
+
+		 <textarea class="bs-example" id="editor" style="resize:none;border-style:solid;border-width:1px;width:100%;height:400px;overflow: auto;">
+		</textarea>
+
+	<div></div>
+	<div class="col-md-12" style="text-align:right;float:right;margin-top:10px;">	
+		<button  id="ch" type="button" class="btn btn-success btn-md" onclick="submit()">Submit Code</button></div>
+	</div>
 	</div>
 	<br>
 
@@ -118,7 +141,7 @@
             </div>
 
             <div class="col-md-6" style="height:234px;overflow: auto;">
-                <table class="table table-bordered table-condensed" id="tableToModify">
+                <table class="table table-bordered table-condensed intable" id="tableToModify">
                     <thead>
                         <tr>
                             <th>Current State</th>
@@ -173,6 +196,8 @@
 			
 			<div class="col-md-12">
 				<div class="col-md-6">
+					<button type="button" class="btn btn-danger btn-md" onclick="clearAll()"><i class="glyphicon glyphicon-remove"></i></a> Clear All</button>
+				
 					<button type="button" class="btn btn-warning btn-md" onclick="lexicalCheck()"><i class="glyphicon glyphicon-fire"></i></a> Lexical Check</button>
 				</div>
 				<div class="col-md-6" style="float:right;text-align:right;">
@@ -194,14 +219,15 @@
 			<div class="col-md-8">
 				<input type="text" class="form-control" id="inputString"></input>
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<button type="button" class="btn btn-primary btn-md" onclick="runStep()"><i class="glyphicon glyphicon-play"></i> Step</button>
 				<button type="button" class="btn btn-success btn-md" onclick="run()"><i class="glyphicon glyphicon-fast-forward"></i> Run</button>
+				<button type="button" class="btn btn-warning btn-md" onclick="pause()"><i class="glyphicon glyphicon-stop"></i> Stop</button>
+				<button type="button" class="btn btn-danger btn-md" onclick="stop()"><i class="glyphicon glyphicon-pause"></i> Pause</button>	
 			</div>
 		</div>
 	
 		<div class="col-md-12">
-		
             <br>
             <h3>Output</h3>
 			<div class="col-md-6">
@@ -225,6 +251,7 @@
 	<script src="js/visualization.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/simulateFile.js"></script>
+
     <script type="text/javascript">
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
@@ -237,6 +264,41 @@
 	$(document).on('hidden.bs.modal', function (e) {
 		$(e.target).removeData('bs.modal');
 	});
+	$('#ch').click(function() 
+		{ 
+		  if ($(this).html() == "Open") 
+		  { 
+			 $(this).html("Close"); 
+			 $(this).removeClass("btn-success").addClass("btn-danger");
+		  } 
+		  else 
+		  { 
+			 $(this).html("Open"); 
+			 $(this).removeClass("btn-danger").addClass("btn-success");
+		  }; 
+	});
+	function openEditor(){
+		
+		$('#editorW').slideToggle("fast");
+	}
+
+	function clearAll(){
+		$(':input').val('');
+		$('#in').val('');
+		$('#intable').empty();
+		$('#rowToClone tr:not(:first)').not(function(){
+			if ($(this).has('th').length){
+				return true
+			}
+		}).remove();
+		
+		$('#output').empty();
+		$('#visualization').empty();
+		variableDeclaration = [];
+		variableName = '';
+		data = [];
+		lines = [];
+	};
 	
 	function runStep(){
 	

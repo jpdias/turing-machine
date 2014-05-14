@@ -8,7 +8,7 @@ function loadLocal(arg) {
 	$(function() {
             $.get(arg, function(dados) {
                 readerResult = dados;
-		
+			$('#editor').val(dados); 
 			//read file line by line
             var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
 			
