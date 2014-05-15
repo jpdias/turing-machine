@@ -34,13 +34,13 @@ function lexicalCheck()
 	
 	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9](,Q[0-9])*)+$"))
 	{
-		lexicalCheckString = "<font color=\"green\">" + "States Set Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "States Set Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "States Set Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "States Set Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "States Set Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -54,13 +54,13 @@ function lexicalCheck()
 	
 	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Alphabet Set Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Alphabet Set Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Alphabet Set Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Alphabet Set Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -84,13 +84,13 @@ function lexicalCheck()
 	
 	if(blankSymbolInput.length > 0 && blankSymbolInputFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Blank Symbol Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Blank Symbol Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Blank Symbol Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Blank Symbol Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Blank Symbol Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Blank Symbol Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -122,13 +122,13 @@ function lexicalCheck()
 	
 	if(inputSymbolsInput.length > 0 && inputSymbolsInputFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Input Symbols Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Input Symbols Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Input Symbols Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Input Symbols Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input Symbols Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input Symbols Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -150,13 +150,13 @@ function lexicalCheck()
 	
 	if(initialStateInput.length > 0 && initialStateInputFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Initial State Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Initial State Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Initial State Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Initial State Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "Initial State Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Initial State Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -188,13 +188,13 @@ function lexicalCheck()
 	
 	if(finalStatesInput.length > 0 && finalStatesInputFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Final States Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Final States Ok!" + "</font><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Final States Not Ok." + "</font><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Final States Error!" + "</font><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "Final States Not Ok." + "</font><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Final States Error!" + "</font><br>";
 		
 		error = true;
 	}
@@ -228,13 +228,13 @@ function lexicalCheck()
 	
 	if(inputString.length > 0 && inputCharsFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Input String Ok." + "</font><br><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Input String Ok!" + "</font><br><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Input String Not Ok." + "</font><br><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Input String Error!" + "</font><br><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "Input String Not Ok." + "</font><br><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input String Error!" + "</font><br><br>";
 		
 		error = true;
 	}
@@ -306,11 +306,11 @@ function lexicalCheck()
 		
 		if(currentStateInput.length > 0 && currentStateFound)
 		{
-			lexicalCheckString = "<font color=\"green\">" + "Current State Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"green\">" + "Current State Ok!" + "</font><br>";
 		}
 		else
 		{
-			lexicalCheckString = "<font color=\"red\">" + "Current State Not Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"red\">" + "Current State Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -319,13 +319,13 @@ function lexicalCheck()
 		
 		if(nextStateInput.length > 0 && nextStateFound)
 		{
-			lexicalCheckString = "<font color=\"green\">" + "Next State Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"green\">" + "Next State Ok!" + "</font><br>";
 		}
 		else
 		{
-			lexicalCheckString = "<font color=\"red\">" + "Next State Not Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"red\">" + "Next State Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Next State Not Ok." + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Next State Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -351,13 +351,13 @@ function lexicalCheck()
 		
 		if(scanSymbolInput.length > 0 && scanSymbolFound)
 		{
-			lexicalCheckString = "<font color=\"green\">" + "Scan Symbol Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"green\">" + "Scan Symbol Ok!" + "</font><br>";
 		}
 		else
 		{
-			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Not Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Not Ok." + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -366,13 +366,13 @@ function lexicalCheck()
 		
 		if(printSymbolInput.length > 0 && printSymbolFound)
 		{
-			lexicalCheckString = "<font color=\"green\">" + "Print Symbol Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"green\">" + "Print Symbol Ok!" + "</font><br>";
 		}
 		else
 		{
-			lexicalCheckString = "<font color=\"red\">" + "Print Symbol Not Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print Symbol Not Ok." + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -381,13 +381,13 @@ function lexicalCheck()
 		
 		if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
 		{
-			lexicalCheckString = "<font color=\"green\">" + "Direction Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"green\">" + "Direction Ok!" + "</font><br>";
 		}
 		else
 		{
-			lexicalCheckString = "<font color=\"red\">" + "Direction Not Ok." + "</font><br>";
+			lexicalCheckString = "<font color=\"red\">" + "Direction Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction Not Ok." + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -410,7 +410,7 @@ function lexicalCheck()
 		
 		output.innerHTML = "";
 		
-		lexicalCheckOkString = "<font color=\"green\">" + "Lexical Check Ok." + "</font><br>";
+		lexicalCheckOkString = "<font color=\"green\">" + "Lexical Check Ok!" + "</font><br>";
 		
 		lexicalCheckOkString = lexicalCheckOkString + "<br>" + "Graph visualization created." + "<br>";
 		
