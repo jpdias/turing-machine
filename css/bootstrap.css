@@ -6,6 +6,18 @@
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
+.tapeanim{
+	border-style:solid;
+	border-width:1px;
+	width: 40px; 
+	z-index: 1; 
+	height: 40px;
+	text-align:center;
+	margin-right:5px; 
+	margin-left:5px;
+	float:left;
+}
+
 .btn-circle {
   width: 20px;
   height: 20px;
@@ -27,8 +39,7 @@ color: #bbb;
 }
 
 .bs-example {
-margin-left: 0;
-margin-right: 0;
+
 background-color: #fff;
 border-width: 1px;
 border-color: #ddd;
