@@ -52,6 +52,7 @@ function Tape(alphabet, blank, pos, tapeContent)
 		for(var i= 0; i < tapeContent.length; i++)
 		{
 			document.write(tapeContent[i]);
+			
 		}
 		document.write("<br>");
 	}
@@ -78,14 +79,26 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		for(var k= 0; k < (this.tape).tapeContent.length; k++)
 		{
 			if(k == (this.tape).pos)
-				stepString += "<font color=\"red\">" + (this.tape).tapeContent[k] + "</font>";
+				stepString += "<font color='red'>" + (this.tape).tapeContent[k] + "</font>";
 			else
-				stepString += "<font color=\"black\">" + (this.tape).tapeContent[k] + "</font>";
+				stepString += "<font color='black'>" + (this.tape).tapeContent[k] + "</font>";
 		}
 		stepString += "<br>";
 				
 		stepResult.insertAdjacentHTML('beforeend', stepString);
-		
+		var i;
+		document.getElementById('animation').innerHTML ="";
+		var elements = new Array();
+		elements = stepString.split("</font>");
+		console.log(elements);
+		for(i=0;i<elements.length-1;i++){
+			console.log(i+ ": "+elements[i]);
+			if(elements[i].indexOf("red")> -1) 
+				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
+			else
+				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="outline: 1px dotted #DDC;background-color:#DDD" id="anim'+i +'">' + elements[i] +'</font></div>';
+			
+		};
 		
 		//obtain symbol on the current tape position
 		var currentSymbolOnTape= (this.tape).read();

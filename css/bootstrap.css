@@ -15,7 +15,9 @@
 	text-align:center;
 	margin-right:5px; 
 	margin-left:5px;
-	float:left;
+	display:inline-block;
+	/*float:left;*/
+	font-size: 15px;
 }
 
 .btn-circle {
@@ -43,11 +45,18 @@ color: #bbb;
 background-color: #fff;
 border-width: 1px;
 border-color: #ddd;
-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 4px 4px;
 box-shadow: none;
 padding: 10px;
 }
+.bs-example1 {
 
+background-color: #fff;
+border-width: 1px;
+border-color: #ddd;
+box-shadow: none;
+padding: 10px;
+}
 
 html {
   font-family: sans-serif;
