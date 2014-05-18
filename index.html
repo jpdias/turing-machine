@@ -215,10 +215,11 @@
 				<input type="text" class="form-control" id="inputString"></input>
 			</div>
 			<div class="col-md-4">
-				<button type="button" class="btn btn-primary btn-md" onclick="runStep()"><i class="glyphicon glyphicon-play"></i> Step</button>
-				<button type="button" class="btn btn-success btn-md" onclick="run()"><i class="glyphicon glyphicon-fast-forward"></i> Run</button>
-				<button type="button" class="btn btn-danger btn-md" onclick="pause()"><i class="glyphicon glyphicon-stop"></i> Stop</button>
-				<button type="button" class="btn btn-warning btn-md" onclick="stop()"><i class="glyphicon glyphicon-pause"></i> Pause</button>	
+				<button type="button" class="btn btn-primary btn-md" onclick="runStep()" id="stepButton"><i class="glyphicon glyphicon-play"></i> Step</button>
+				<button type="button" class="btn btn-success btn-md" onclick="run()" id="runButton"><i class="glyphicon glyphicon-fast-forward"></i> Run</button>
+				<button type="button" class="btn btn-danger btn-md" onclick="stop()" id="stopButton"><i class="glyphicon glyphicon-stop"></i> Stop</button>
+				<button type="button" class="btn btn-warning btn-md" onclick="pause()" id="pauseButton"><i class="glyphicon glyphicon-pause"></i> Pause</button>
+				<button type="button" class="btn btn-success btn-md" onclick="resume()" id="resumeButton"><i class="glyphicon glyphicon-fast-forward"></i> Resume</button>				
 			</div>
 		</div>
 	
@@ -296,7 +297,18 @@
 		variableName = '';
 		data = [];
 		lines = [];
+		
+		data = new Array();
 	};
+	
+	$(document).ready(function()
+	{
+		document.getElementById("stepButton").disabled = true;
+		document.getElementById("runButton").disabled = true;
+		document.getElementById("pauseButton").disabled = true;
+		document.getElementById("stopButton").disabled = true;
+		document.getElementById("resumeButton").disabled = true;
+	});
 	
 	function runStep(){
 	
@@ -345,6 +357,33 @@
 				turingMachine.run();
 			}
 		}
+	}
+	
+	function stop()
+	{
+		var output = document.getElementById('output');
+				
+		output.insertAdjacentHTML('beforeend', "Turing Machine stoped!<br>");
+		
+		turingMachine.stop();
+	}
+	
+	function pause()
+	{
+		var output = document.getElementById('output');
+				
+		output.insertAdjacentHTML('beforeend', "Turing Machine paused!<br>");
+		
+		turingMachine.pause();
+	}
+	
+	function resume()
+	{
+		var output = document.getElementById('output');
+				
+		output.insertAdjacentHTML('beforeend', "Turing Machine resumed!<br>");
+		
+		turingMachine.resume();
 	}
 	
 	</script>

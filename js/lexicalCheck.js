@@ -416,6 +416,10 @@ function lexicalCheck()
 		
 		
 		output.insertAdjacentHTML('beforeend', lexicalCheckOkString);
+		
+		
+		document.getElementById("stepButton").disabled = false;
+		document.getElementById("runButton").disabled = false;
 	}
 	else
 	{

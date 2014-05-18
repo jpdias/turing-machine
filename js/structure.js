@@ -1,5 +1,3 @@
-var stepReturn = 2;
-
 String.prototype.replaceAt=function(index, character) 
 {
 	return this.substr(0, index) + character + this.substr(index+character.length);
@@ -13,6 +11,19 @@ function Tape(alphabet, blank, pos, tapeContent)
 	this.blankSymbol= blank;
 	this.pos= pos;
 	this.tapeContent= tapeContent;
+	
+	this.alphabetCopy= alphabet;
+	this.blankSymbolCopy= blank;
+	this.posCopy= pos;
+	this.tapeContentCopy= tapeContent;
+	
+	this.reset = function()
+	{
+		this.alphabet= this.alphabetCopy;
+		this.blankSymbol= this.blankSymbolCopy;
+		this.pos= this.posCopy;
+		this.tapeContent= this.tapeContentCopy;
+	}
 	
 	//methods
 	this.moveRight= function (){
@@ -59,6 +70,10 @@ function Tape(alphabet, blank, pos, tapeContent)
 	
 }
 
+var stepReturn = 2;
+
+var steper = null;
+
 //"TuringMachine class"
 function TuringMachine(tape, transitionsTable, initialState, finalStates)
 {
@@ -69,6 +84,55 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	//this.blankSymbol= blank; // Necessary???
 	this.currentState= initialState;
 	this.stepNumber= 0;
+	
+	this.tapeCopy= tape;
+	this.transitionsTableCopy= transitionsTable;
+	this.initialStateCopy= initialState;
+	this.finalStatesCopy= finalStates;
+	this.currentStateCopy= initialState;
+	
+	this.reset = function()
+	{
+		this.tape= this.tapeCopy;
+		this.transitionsTable= this.transitionsTableCopy;
+		this.initialState= this.initialStateCopy;
+		this.finalStates= this.finalStatesCopy;
+		this.currentState= this.currentStateCopy;
+		this.stepNumber= 0;
+		
+		stepReturn = 2;
+		
+		
+		(this.tape).reset();
+	}
+	
+	this.stop = function()
+	{
+		clearInterval(steper);
+		
+		this.reset();
+
+		document.getElementById("runButton").disabled = false;
+		document.getElementById("stopButton").disabled = true;		
+		document.getElementById("pauseButton").disabled = true;
+	}
+	
+	this.pause = function()
+	{
+		clearInterval(steper);
+
+		document.getElementById("pauseButton").disabled = true;	
+		document.getElementById("resumeButton").disabled = false;
+	}
+	
+	this.resume = function()
+	{
+		this.run();
+		
+		document.getElementById("pauseButton").disabled = false;
+		document.getElementById("resumeButton").disabled = true;
+	}
+	
 	this.step= function(){
 	
 		stepReturn = 2;
@@ -86,6 +150,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		stepString += "<br>";
 				
 		stepResult.insertAdjacentHTML('beforeend', stepString);
+		
 		var i;
 		document.getElementById('animation').innerHTML ="";
 		var elements = new Array();
@@ -139,7 +204,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				if(finalStates[j] == this.currentState)
 				{
 					
-					stepString= "<br><br><font color=\"green\">" + "SUCCESS!" + "</font><br>";
+					stepString= "<br><br><font color=\"green\">" + "Success!" + "</font><br>";
 					stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
 					colorNode(turingMachine.currentState);
@@ -159,7 +224,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		}
 		else
 		{
-			stepString = "<br><br><font color=\"red\">" + "FAIL!" + "</font><br>";
+			stepString = "<br><br><font color=\"red\">" + "Fail!" + "</font><br>";
 			stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
 			colorNode(turingMachine.currentState);
@@ -175,11 +240,19 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	}
 	this.run= function(){
 		
-		var steper = setInterval(function ()
+		document.getElementById("runButton").disabled = true;
+		document.getElementById("stopButton").disabled = false;
+		document.getElementById("pauseButton").disabled = false;
+		
+		steper = setInterval(function ()
 		{
 			if (stepReturn != 2)
 			{
 				clearInterval(steper);
+				
+				turingMachine.reset();
+				
+				document.getElementById("runButton").disabled = false;
 			}
 			else
 			{
