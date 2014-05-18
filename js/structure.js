@@ -74,6 +74,10 @@ var stepReturn = 2;
 
 var steper = null;
 
+var time = 0;
+
+var timer = null;
+
 //"TuringMachine class"
 function TuringMachine(tape, transitionsTable, initialState, finalStates)
 {
@@ -110,6 +114,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	{
 		clearInterval(steper);
 		
+		clearInterval(timer);
+		
 		this.reset();
 
 		document.getElementById("runButton").disabled = false;
@@ -120,6 +126,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.pause = function()
 	{
 		clearInterval(steper);
+		
+		clearInterval(timer);
 
 		document.getElementById("pauseButton").disabled = true;	
 		document.getElementById("resumeButton").disabled = false;
@@ -198,6 +206,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			
 			this.stepNumber += 1;
 			
+			$('#nsteps').html(this.stepNumber);
+			
 			//check if a final state have been reached.
 			for(var j= 0; j < (this.finalStates).length; j++)
 			{
@@ -208,6 +218,9 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 					stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
 					colorNode(turingMachine.currentState);
+					
+					$('#currentstep').html(this.currentState);
+					
 					stepReturn = 1;
 				}
 			}
@@ -228,13 +241,16 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
 			colorNode(turingMachine.currentState);
+			
+			$('#currentstep').html(this.currentState);
+			
 			stepReturn = 0;
 		}
 		
 		
 		colorNode(turingMachine.currentState);
 		
-		
+		$('#currentstep').html(this.currentState);
 	}
 	this.runNsteps= function(numberOfSteps){
 	}
@@ -259,6 +275,20 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				turingMachine.step();
 			}
 		}, 750);
+		
+		timer = setInterval(function ()
+		{
+			if (stepReturn != 2)
+			{
+				clearInterval(timer);
+			}
+			else
+			{
+				time = time + 1;
+				
+				$('#tsteps').html(time + " s");
+			}
+		}, 1000);
 	}
 	this.show= function(){
 		document.write("tape... <br>");

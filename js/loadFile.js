@@ -5,7 +5,9 @@ document.head.appendChild(imported);
 var data = new Array();
 
 function handleFileSelect(evt) {
-    evt.stopPropagation();
+    clearAll();
+	
+	evt.stopPropagation();
     evt.preventDefault();
 
     var files = evt.dataTransfer.files; // FileList object.

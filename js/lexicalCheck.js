@@ -420,6 +420,7 @@ function lexicalCheck()
 		
 		document.getElementById("stepButton").disabled = false;
 		document.getElementById("runButton").disabled = false;
+		document.getElementById("stopButton").disabled = false;
 	}
 	else
 	{
