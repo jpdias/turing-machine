@@ -211,10 +211,10 @@
         </div>
 		<div class="col-md-12">
 			<br>
-			<div class="col-md-8">
+			<div class="col-md-7">
 				<input type="text" class="form-control" id="inputString"></input>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<button type="button" class="btn btn-primary btn-md" onclick="runStep()" id="stepButton"><i class="glyphicon glyphicon-play"></i> Step</button>
 				<button type="button" class="btn btn-success btn-md" onclick="run()" id="runButton"><i class="glyphicon glyphicon-fast-forward"></i> Run</button>
 				<button type="button" class="btn btn-danger btn-md" onclick="stop()" id="stopButton"><i class="glyphicon glyphicon-stop"></i> Stop</button>
@@ -230,8 +230,21 @@
 		
 		</div>
 			<div class="col-md-6">
-
-			<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:400px;overflow: auto;">
+			<div class="bs-example" style="border-style:solid;border-width:1px;height:90px;margin-bottom:10px;">
+				<div style="width:33.3%;height:100%; border-right: 1px solid;float:left;">
+					<div style="text-align:center;height:25%;">Number of Steps</div>
+					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="nsteps">0</div>
+				</div>
+				<div style="width:33.3%;height:100%; border-right: 1px solid;float:left;">
+					<div style="text-align:center;height:25%;">Current State</div>
+					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="currentstep">x</div>
+				</div>
+				<div style="width:33.3%;height:100%;float:left;">
+					<div style="text-align:center;height:25%;">Execution Time</div>
+					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="tsteps">0</div>
+				</div>
+			</div>
+			<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:300px;overflow: auto;">
                 </div>
 				<br>
 				<br>
