@@ -17,7 +17,7 @@ Melhorar e acrescentar mais opções de debug
 Animação grafica da fita
 Melhorias gerais e correçao de bugs
 
-
+ 
 Boa noite professor,
 
 De acordo com o solicitado, segue de seguida todas as funcionalidades implementadas (algumas parcialmente) 
