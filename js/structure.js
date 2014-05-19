@@ -116,6 +116,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		
 		clearInterval(timer);
 		
+		time = 0;
+		
 		this.reset();
 
 		document.getElementById("runButton").disabled = false;
@@ -164,12 +166,18 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		var elements = new Array();
 		elements = stepString.split("</font>");
 		console.log(elements);
+		var size = 40;
+		var padding = '';
+		if(elements.length>21){
+			size = 20;
+			padding = "padding-left:5px;padding-bottom:5px;"
+		}
 		for(i=0;i<elements.length-1;i++){
 			console.log(i+ ": "+elements[i]);
 			if(elements[i].indexOf("red")> -1) 
-				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
+				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+ size + 'px;'+padding+'outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
 			else
-				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="outline: 1px dotted #DDC;background-color:#DDD" id="anim'+i +'">' + elements[i] +'</font></div>';
+				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+size + 'px;'+padding+'outline: 1px dotted #DDC;background-color:#DDD" id="anim'+i +'">' + elements[i] +'</font></div>';
 			
 		};
 		
@@ -259,7 +267,18 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		document.getElementById("runButton").disabled = true;
 		document.getElementById("stopButton").disabled = false;
 		document.getElementById("pauseButton").disabled = false;
+		clearInterval(timer);
 		
+		time = 0;
+		var timeNull = 0;
+		var timeWait = 750;
+		var timeBetween = 0;
+		if($("#chkRealTime").is(":checked")){
+			timeBetween = timeNull;
+		}
+		else{
+			timeBetween = timeWait;
+		}
 		steper = setInterval(function ()
 		{
 			if (stepReturn != 2)
@@ -274,7 +293,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			{
 				turingMachine.step();
 			}
-		}, 750);
+		}, timeBetween);
 		
 		timer = setInterval(function ()
 		{
@@ -284,11 +303,11 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			}
 			else
 			{
-				time = time + 1;
-				
+				var timeTemp = time + 0.01;
+				time= Math.round(timeTemp*100)/100;
 				$('#tsteps').html(time + " s");
 			}
-		}, 1000);
+		}, 10);
 	}
 	this.show= function(){
 		document.write("tape... <br>");

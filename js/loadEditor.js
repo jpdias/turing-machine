@@ -17,7 +17,7 @@ function loadEditor() {
 					return true
 				}
 			}).remove();
-			
+			 clearLexicalAll();
 			$('#output').html("");
 			//console.log($('#output').html());
 			$('#visualization').html("");

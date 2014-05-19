@@ -6,7 +6,7 @@ var data = new Array();
 
 function handleFileSelect(evt) {
     clearAll();
-	
+	clearLexicalAll();
 	evt.stopPropagation();
     evt.preventDefault();
 

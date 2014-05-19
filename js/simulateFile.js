@@ -6,9 +6,12 @@ var data = new Array();
 
 function loadLocal(arg) {
 	$(function() {
+		clearAll();
+		clearLexicalAll();
             $.get(arg, function(dados) {
                 readerResult = dados;
 			$('#editor').val(dados); 
+
 			//read file line by line
             var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
 			

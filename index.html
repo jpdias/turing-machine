@@ -235,17 +235,21 @@
 		</div>
 			<div class="col-md-6">
 			<div class="bs-example" style="border-style:solid;border-width:1px;height:90px;margin-bottom:10px;">
-				<div style="width:33.3%;height:100%; border-right: 1px solid;float:left;">
+				<div style="width:25%;height:100%; border-right: 1px solid;float:left;">
 					<div style="text-align:center;height:25%;">Number of Steps</div>
 					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="nsteps">0</div>
 				</div>
-				<div style="width:33.3%;height:100%; border-right: 1px solid;float:left;">
+				<div style="width:25%;height:100%; border-right: 1px solid;float:left;">
 					<div style="text-align:center;height:25%;">Current State</div>
 					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="currentstep">x</div>
 				</div>
-				<div style="width:33.3%;height:100%;float:left;">
+				<div style="width:25%;height:100%;border-right: 1px solid;float:left;">
 					<div style="text-align:center;height:25%;">Execution Time</div>
 					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="tsteps">0</div>
+				</div>
+				<div style="width:25%;height:100%;float:left;">
+					<div style="text-align:center;height:25%;">Real Time</div>
+					<div style="display: block; text-align: center; height:75%;font-size:15px;" id=""> <br><input type="checkbox" id="chkRealTime"></input> Active</div>
 				</div>
 			</div>
 			<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:300px;overflow: auto;">
@@ -404,7 +408,21 @@
 		
 		turingMachine.resume();
 	}
-	
+	function clearLexicalAll(){
+		statesSet = "";
+		alphabetSet = "";
+		blankSymbolInput = "";
+		inputSymbols = "";
+		initialStateInput = "";
+		finalStates = "";
+		inputString = "";
+		turingMachine = "";
+		tape = "";
+		error = false;
+		lexicalCheckString = "Formal Definition Lexical Check: " + "<br>";
+		lexicalCheckErrorsString = "";
+		lexicalCheckRunned = false;
+	}
 	</script>
 		
 </body>
