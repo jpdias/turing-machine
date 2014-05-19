@@ -78,6 +78,8 @@ var time = 0;
 
 var timer = null;
 
+var running = false;
+
 //"TuringMachine class"
 function TuringMachine(tape, transitionsTable, initialState, finalStates)
 {
@@ -119,6 +121,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		time = 0;
 		
 		this.reset();
+		
+		running = false;
 
 		document.getElementById("runButton").disabled = false;
 		document.getElementById("stopButton").disabled = true;		
@@ -130,6 +134,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		clearInterval(steper);
 		
 		clearInterval(timer);
+		
+		running = false;
 
 		document.getElementById("pauseButton").disabled = true;	
 		document.getElementById("resumeButton").disabled = false;
@@ -138,6 +144,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.resume = function()
 	{
 		this.run();
+		
+		running = true;
 		
 		document.getElementById("pauseButton").disabled = false;
 		document.getElementById("resumeButton").disabled = true;
@@ -276,7 +284,10 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		document.getElementById("runButton").disabled = true;
 		document.getElementById("stopButton").disabled = false;
 		document.getElementById("pauseButton").disabled = false;
+		
 		clearInterval(timer);
+		
+		running = true;
 		
 		time = 0;
 		var timeNull = 0;
@@ -297,6 +308,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				turingMachine.reset();
 				
 				document.getElementById("runButton").disabled = false;
+				
+				running = false;
 			}
 			else
 			{
@@ -318,6 +331,43 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			}
 		}, 10);
 	}
+	
+	
+	this.changeSteper = function(){
+		
+		if(running == true)
+		{
+			clearInterval(steper);
+			
+			var timeNull = 0;
+			var timeWait = 750;
+			var timeBetween = 0;
+			if($("#chkRealTime").is(":checked")){
+				timeBetween = timeNull;
+			}
+			else{
+				timeBetween = timeWait;
+			}
+			steper = setInterval(function ()
+			{
+				if (stepReturn != 2)
+				{
+					clearInterval(steper);
+					
+					turingMachine.reset();
+					
+					document.getElementById("runButton").disabled = false;
+					
+					running = false;
+				}
+				else
+				{
+					turingMachine.step();
+				}
+			}, timeBetween);
+		}
+	}
+	
 	this.show= function(){
 		document.write("tape... <br>");
 		document.write("Initial State= " + this.initialState + "!<br>");

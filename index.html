@@ -331,6 +331,20 @@
 		document.getElementById("pauseButton").disabled = true;
 		document.getElementById("stopButton").disabled = true;
 		document.getElementById("resumeButton").disabled = true;
+		
+		$("#inputString").change(function()
+		{
+			document.getElementById("stepButton").disabled = true;
+			document.getElementById("runButton").disabled = true;
+			document.getElementById("pauseButton").disabled = true;
+			document.getElementById("stopButton").disabled = true;
+			document.getElementById("resumeButton").disabled = true;
+		});
+		
+		$("#chkRealTime").change(function()
+		{
+			turingMachine.changeSteper();
+		});
 	});
 	
 	function runStep(){
