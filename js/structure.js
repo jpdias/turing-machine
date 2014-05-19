@@ -333,8 +333,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	}
 	
 	
-	this.changeSteper = function(){
-	
+	this.changeSteper = function()
+	{
 		
 		if(running == true)
 		{
