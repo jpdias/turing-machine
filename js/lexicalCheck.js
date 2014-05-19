@@ -21,6 +21,8 @@ var lexicalCheckRunned = false;
 
 function lexicalCheck()
 {
+	
+
 	var output = document.getElementById('output');
 	
 	// output.innerHTML = "";
@@ -165,13 +167,14 @@ function lexicalCheck()
 	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
-	
+	//console.log(finalStatesInput);
 	finalStates = finalStatesInput.split(",");
 	
 	var finalStatesInputFound = true;
 	
 	for(var i = 0; i < finalStates.length; i++)
 	{
+	
 		var finalStateInputFound = false;
 		
 		for(var j = 0; j < statesSet.length; j++)
@@ -182,8 +185,9 @@ function lexicalCheck()
 			}
 		}
 		
-		if(finalStateInputFound == false)
+		if(finalStateInputFound == false){
 			finalStatesInputFound = false;
+		}
 	}
 	
 	if(finalStatesInput.length > 0 && finalStatesInputFound)
@@ -192,6 +196,7 @@ function lexicalCheck()
 	}
 	else
 	{
+		console.log(finalStatesInput+'   '+finalStatesInputFound);
 		lexicalCheckString = "<font color=\"red\">" + "Final States Error!" + "</font><br>";
 		
 		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Final States Error!" + "</font><br>";
