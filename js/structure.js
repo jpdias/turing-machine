@@ -165,22 +165,31 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		document.getElementById('animation').innerHTML ="";
 		var elements = new Array();
 		elements = stepString.split("</font>");
-		console.log(elements);
+		//console.log(elements);
 		var size = 40;
 		var padding = '';
-		if(elements.length>21){
+		var anim = true;
+		if(elements.length>21 && elements.length<42){
 			size = 20;
 			padding = "padding-left:5px;padding-bottom:5px;"
 		}
-		for(i=0;i<elements.length-1;i++){
-			console.log(i+ ": "+elements[i]);
-			if(elements[i].indexOf("red")> -1) 
-				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+ size + 'px;'+padding+'outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
-			else
-				document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+size + 'px;'+padding+'outline: 1px dotted #DDC;background-color:#DDD" id="anim'+i +'">' + elements[i] +'</font></div>';
-			
-		};
-		
+		else if(elements.length>42){
+			anim = false;
+			console.log("anim false");
+		}
+		if(anim == false){
+			document.getElementById('animation').style.fontSize="large";
+			document.getElementById('animation').innerHTML="Input to long!";}
+		else{
+			for(i=0;i<elements.length-1;i++){
+				//console.log(i+ ": "+elements[i]);
+				if(elements[i].indexOf("red")> -1) 
+					document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+ size + 'px;'+padding+'outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
+				else
+					document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+size + 'px;'+padding+'outline: 1px dotted #DDC;background-color:#DDD" id="anim'+i +'">' + elements[i] +'</font></div>';
+				
+			};
+		}
 		//obtain symbol on the current tape position
 		var currentSymbolOnTape= (this.tape).read();
 			
