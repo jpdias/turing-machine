@@ -263,7 +263,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		else
 		{
 			stepString = "<br><br><font color=\"red\">" + "Fail!" + "</font><br>";
-			stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
+			//stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
 			colorNode(turingMachine.currentState);
 			
