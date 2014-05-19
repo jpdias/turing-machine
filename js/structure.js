@@ -305,6 +305,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			{
 				clearInterval(steper);
 				
+				clearInterval(timer);
+				
 				turingMachine.reset();
 				
 				document.getElementById("runButton").disabled = false;
@@ -321,7 +323,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		{
 			if (stepReturn != 2)
 			{
-				clearInterval(timer);
+				
 			}
 			else
 			{
@@ -354,6 +356,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				if (stepReturn != 2)
 				{
 					clearInterval(steper);
+					
+					clearInterval(timer);
 					
 					turingMachine.reset();
 					
