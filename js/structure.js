@@ -332,6 +332,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		}, 10);
 	}
 	
+	
 	this.changeSteper = function(){
 		
 		if(running == true)
