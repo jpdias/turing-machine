@@ -267,23 +267,18 @@
 	   </div>
     </div>
 	<script src="js/jquery.js"></script>
-    <script src="js/loadFile.js"></script>
-	<script src="js/loadEditor.js"></script>
-    <script src="js/lexicalCheck.js"></script>
 	<script src="js/vis.js"></script>
 	<script src="js/visualization.js"></script>
 	<script src="js/bootstrap.js"></script>
-	<script src="js/simulateFile.js"></script>
 
+	
     <script type="text/javascript">
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
 
             rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" id="chk"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
-    </script>
-	
-	<script type="text/javascript">
+
 	$(document).on('hidden.bs.modal', function (e) {
 		$(e.target).removeData('bs.modal');
 	});
@@ -321,6 +316,7 @@
 		variableName = '';
 		data = [];
 		lines = [];
+		breakpoints = [];
 		
 		data = new Array();
 	};
@@ -445,6 +441,10 @@
 		lexicalCheckRunned = false;
 	}
 	</script>
+	<script src="js/simulateFile.js"></script>
+	<script src="js/loadFile.js"></script>
+	<script src="js/loadEditor.js"></script>
+    <script src="js/lexicalCheck.js"></script>
 		
 </body>
 
