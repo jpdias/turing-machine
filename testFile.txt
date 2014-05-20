@@ -22,17 +22,13 @@ transitions.start
 	(Q3,B)->(Q4,B,R);
 transitions.end
 
-//Input String
+// Tape Input
 input.start
 	Input=000111;
 input.end
 
+// Breakpoints
 breakpoints.start
-	transitions.start
-		state(Q0){times=1;msg="xpto xpa"};
-		state(Q0->Q1){times=1;msg="xpto xpa"};
-	transitions.end
-	input.start
-		pos(1,2,3){msg="stop tape"};
-	input.end
+	state(Q0){times=1;message="Reached Q0!"};
+	inputPosition(0){times=1;message="Reached input position 0!"};
 breakpoints.end

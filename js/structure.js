@@ -242,6 +242,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 					stepString= "<br><font color=\"green\">" + "Success!" + "</font><br>";
 					//stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
+					
 					colorNode(turingMachine.currentState);
 					
 					$('#currentstep').html(this.currentState);
@@ -265,6 +266,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			stepString = "<br><font color=\"red\">" + "Fail!" + "</font><br>";
 			//stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
+			
 			colorNode(turingMachine.currentState);
 			
 			$('#currentstep').html(this.currentState);
@@ -276,6 +278,32 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		colorNode(turingMachine.currentState);
 		
 		$('#currentstep').html(this.currentState);
+		
+		if($("#chkBreakpoints").is(":checked"))
+		{
+			var j = 0;
+				
+			while(j < breakpoints.length)
+			{
+				if(breakpoints[j].type == "state" && this.currentState == breakpoints[j].where && breakpoints[j].times == 1)
+				{
+					$('#output').append("Breakpoint!" + " Current State: " + this.currentState + "; Message: " + breakpoints[j].message + "<br>");
+					
+					turingMachine.pause();
+				}
+				else
+				{
+					if(breakpoints[j].type == "inputPosition" && this.tape.pos == breakpoints[j].where && breakpoints[j].times == 1)
+					{
+						$('#output').append("Breakpoint!" + " Current Tape Position: " + this.tape.pos + "; Message: " + breakpoints[j].message + "<br>");
+						
+						turingMachine.pause();
+					}
+				}
+				
+				j++;
+			}
+		}
 	}
 	this.runNsteps= function(numberOfSteps){
 	}
@@ -289,7 +317,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		
 		running = true;
 		
-		time = 0;
 		var timeNull = 0;
 		var timeWait = 750;
 		var timeBetween = 0;
@@ -312,6 +339,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				document.getElementById("runButton").disabled = false;
 				
 				running = false;
+				
+				time = 0;
 			}
 			else
 			{
@@ -337,7 +366,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	
 	this.changeSteper = function()
 	{
-		
 		if(running == true)
 		{
 			clearInterval(steper);
@@ -364,6 +392,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 					document.getElementById("runButton").disabled = false;
 					
 					running = false;
+					
+					time = 0;
 				}
 				else
 				{
@@ -409,4 +439,13 @@ function Transition(currentState, nextState, scanSymbol, printSymbol, direction)
 	this.scanSymbol= scanSymbol;
 	this.printSymbol= printSymbol;
 	this.direction= direction;
+}
+
+// Breakpoint Class
+function Breakpoint(type, where, times, message)
+{
+	this.type = type;
+	this.where = where;
+	this.times = times;
+	this.message = message;
 }

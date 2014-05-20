@@ -7,7 +7,7 @@ var data = new Array();
 function loadLocal(arg) {
 	$(function() {
 		clearAll();
-		clearLexicalAll();
+		clearLexicalCheck();
             $.get(arg, function(dados) {
                 readerResult = dados;
 			$('#editor').val(dados); 

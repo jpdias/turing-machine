@@ -4,9 +4,12 @@ document.head.appendChild(imported);
 
 var data = new Array();
 
+var breakpoints = new Array();
+
 function handleFileSelect(evt) {
     clearAll();
-	clearLexicalAll();
+	clearLexicalCheck();
+	
 	evt.stopPropagation();
     evt.preventDefault();
 
@@ -37,7 +40,7 @@ function handleFileSelect(evt) {
 					i++;
 					while(lines[i] != "transitions.end")
 					{
-						var line= lines[i].split("->");
+						var line= lines[i].trim().split("->");
 						line[0]= line[0].replace("(", "").replace(")", "");
 						line[1]= line[1].replace("(", "").replace(")", "");
 						var current= line[0].split(",");
@@ -79,7 +82,7 @@ function handleFileSelect(evt) {
 					i++;
 					while(lines[i] != "formalDefinition.end")
 					{
-						var variableDeclaration= lines[i].split("=");
+						var variableDeclaration= lines[i].trim().split("=");
 						var variableName= variableDeclaration[0];
 						var variableContent= variableDeclaration[1].split(";");
 						
@@ -121,7 +124,7 @@ function handleFileSelect(evt) {
 					while(lines[i] != "input.end")
 					{
 					
-						var variableDeclaration= lines[i].split("=");
+						var variableDeclaration= lines[i].trim().split("=");
 						var variableName= variableDeclaration[0];
 						
 						if(variableName == "Input")
@@ -131,6 +134,100 @@ function handleFileSelect(evt) {
 						}
 						else
 						{
+						}
+						
+						i++;
+					}
+				}
+				
+				if(lines[i] == "breakpoints.start")
+				{
+					i++;
+					
+					
+					while(lines[i] != "breakpoints.end")
+					{
+						if(lines[i].trim().indexOf("state") != -1)
+						{
+							var where = lines[i].trim().split(")")[0].split("(")[1];
+							
+							var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
+							
+							var betweenBracketsSplit = betweenBrackets.split(";");
+							
+							
+							var j = 0;
+							
+							var times = 0;
+								
+							var message = "";
+								
+							while(j < betweenBracketsSplit.length)
+							{
+								var instructionName = betweenBracketsSplit[j].split("=")[0];
+								
+								var instructionValue = betweenBracketsSplit[j].split("=")[1];
+								
+								
+								if(instructionName == "times")
+								{
+									times = instructionValue;
+								}
+								else
+								{
+									if(instructionName == "message")
+									{
+										message = instructionValue;
+									}
+								}
+								
+								j++;
+							}
+							
+							
+							breakpoints.push(new Breakpoint("state", where, times, message));
+						}
+						else
+						{
+							if(lines[i].trim().indexOf("inputPosition") != -1)
+							{
+								var where = lines[i].trim().split(")")[0].split("(")[1];
+								
+								var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
+								
+								var betweenBracketsSplit = betweenBrackets.split(";");
+								
+								
+								var j = 0;
+								
+								var times = 0;
+								
+								var message = "";
+								
+								while(j < betweenBracketsSplit.length)
+								{
+									var instructionName = betweenBracketsSplit[j].split("=")[0];
+									
+									var instructionValue = betweenBracketsSplit[j].split("=")[1];
+									
+									if(instructionName == "times")
+									{
+										times = instructionValue;
+									}
+									else
+									{
+										if(instructionName == "message")
+										{
+											message = instructionValue;
+										}
+									}
+									
+									j++;
+								}
+								
+								
+								breakpoints.push(new Breakpoint("inputPosition", where, times, message));
+							}
 						}
 						
 						i++;
