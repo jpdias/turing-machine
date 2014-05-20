@@ -10,16 +10,16 @@ formalDefinition.end
 
 // Transitions
 transitions.start
-(Q0,0)=(Q1,X,R);
-(Q0,Y)=(Q3,Y,R);
-(Q1,0)=(Q1,0,R);
-(Q1,1)=(Q2,Y,L);
-(Q1,Y)=(Q1,Y,R);
-(Q2,0)=(Q2,0,L);
-(Q2,X)=(Q0,X,R);
-(Q2,Y)=(Q2,Y,L);
-(Q3,Y)=(Q3,Y,R);
-(Q3,B)=(Q4,B,R);
+(Q0,0)->(Q1,X,R);
+(Q0,Y)->(Q3,Y,R);
+(Q1,0)->(Q1,0,R);
+(Q1,1)->(Q2,Y,L);
+(Q1,Y)->(Q1,Y,R);
+(Q2,0)->(Q2,0,L);
+(Q2,X)->(Q0,X,R);
+(Q2,Y)->(Q2,Y,L);
+(Q3,Y)->(Q3,Y,R);
+(Q3,B)->(Q4,B,R);
 transitions.end
 
 //Input String

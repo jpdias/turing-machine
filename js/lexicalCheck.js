@@ -21,7 +21,7 @@ var lexicalCheckRunned = false;
 
 function lexicalCheck()
 {
-    clearLexicalAll();
+    clearLexicalCheck();
 	$('#output').html("");
 	//console.log($('#output').html());
 	$('#visualization').html("");

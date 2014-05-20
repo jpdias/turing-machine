@@ -201,7 +201,7 @@
 			<div class="col-md-12">
 				<div class="col-md-6">
 					<button type="button" class="btn btn-danger btn-md" onclick="clearAll()"><i class="glyphicon glyphicon-remove"></i></a> Clear All</button>
-					<button type="button" class="btn btn-warning btn-md" onclick="lexicalCheck()"><i class="glyphicon glyphicon-fire"></i></a> Lexical Check</button>
+					<button id="lxChk" type="button" class="btn btn-warning btn-md" onclick="lexicalCheck()"><i class="glyphicon glyphicon-fire"></i></a> Check Input</button>
 				</div>
 			</div>
 		
@@ -248,8 +248,9 @@
 					<div style="display: flex; justify-content: center; align-items: center; height:75%;font-size:23px;" id="tsteps">0</div>
 				</div>
 				<div style="width:25%;height:100%;float:left;">
-					<div style="text-align:center;height:25%;">Real Time</div>
-					<div style="display: block; text-align: center; height:75%;font-size:15px;" id=""> <br><input type="checkbox" id="chkRealTime"></input> Active</div>
+					<div style="text-align:center;height:10%;">Options</div>
+					<div style="display: block; text-align: center; height:30%;font-size:15px;" id=""> <br><input type="checkbox" id="chkRealTime"></input> Real time</div>
+					<div style="display: block; text-align: center; height:30%;font-size:15px;" id=""> <br><input type="checkbox" id="chkBreakpoints" checked></input> Breakpoints</div>
 				</div>
 			</div>
 			<div class="bs-example" id="output" style="border-style:solid;border-width:1px;height:300px;overflow: auto;">
@@ -422,7 +423,9 @@
 		
 		turingMachine.resume();
 	}
-	function clearLexicalAll(){
+	
+	function clearLexicalCheck()
+	{
 		statesSet = "";
 		alphabetSet = "";
 		blankSymbolInput = "";
@@ -432,9 +435,13 @@
 		inputString = "";
 		turingMachine = "";
 		tape = "";
+		
 		error = false;
+		
 		lexicalCheckString = "Formal Definition Lexical Check: " + "<br>";
+		
 		lexicalCheckErrorsString = "";
+		
 		lexicalCheckRunned = false;
 	}
 	</script>

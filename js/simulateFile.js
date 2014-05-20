@@ -7,7 +7,7 @@ var data = new Array();
 function loadLocal(arg) {
 	$(function() {
 		clearAll();
-		clearLexicalAll();
+		clearLexicalCheck();
             $.get(arg, function(dados) {
                 readerResult = dados;
 			$('#editor').val(dados); 
@@ -16,7 +16,8 @@ function loadLocal(arg) {
             var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
 			
 			//console.log(lines[0]);
-			
+			if(!verifyTags(lines))
+				return;
 			var i= 0;
 			while(i < lines.length)
 			{
@@ -27,7 +28,8 @@ function loadLocal(arg) {
 					i++;
 					while(lines[i] != "transitions.end")
 					{
-						var line= lines[i].split("=");
+						var line= lines[i].split("->");
+						console.log(line[0]);
 						line[0]= line[0].replace("(", "").replace(")", "");
 						line[1]= line[1].replace("(", "").replace(")", "");
 						var current= line[0].split(",");
