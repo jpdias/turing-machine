@@ -12,7 +12,7 @@ function verifyTags(lines){
 	}; 
 	if(lines.indexOf("transitions.end")<0){
 		document.getElementById('output').style.color = "Red";
-		document.getElementById('output').innerHTML = "Opening tag transitions.end not found."
+		document.getElementById('output').innerHTML = "Closing tag transitions.end not found."
 		document.getElementById('lxChk').disabled = true;
 		return false;
 	}; 
@@ -24,7 +24,7 @@ function verifyTags(lines){
 	}; 
 	if(lines.indexOf("formalDefinition.end")<0){
 		document.getElementById('output').style.color = "Red";
-		document.getElementById('output').innerHTML = "Opening tag formalDefinition.end not found."
+		document.getElementById('output').innerHTML = "Closing tag formalDefinition.end not found."
 		document.getElementById('lxChk').disabled = true;
 		return false;
 	}; 
@@ -36,7 +36,7 @@ function verifyTags(lines){
 	}; 
 	if(lines.indexOf("input.end")<0){
 		document.getElementById('output').style.color = "Red";
-		document.getElementById('output').innerHTML = "Opening tag input.end not found."
+		document.getElementById('output').innerHTML = "Closing tag input.end not found."
 		document.getElementById('lxChk').disabled = true;
 		return false;
 	}; 
@@ -82,7 +82,7 @@ function loadEditor() {
 					while(lines[i] != "transitions.end")
 					{
 						
-						var line= lines[i].split("=");
+						var line= lines[i].split("->");
 						line[0]= line[0].replace("(", "").replace(")", "");
 						line[1]= line[1].replace("(", "").replace(")", "");
 						var current= line[0].split(",");
