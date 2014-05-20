@@ -3,7 +3,47 @@ imported.src = 'js/structure.js';
 document.head.appendChild(imported);
 
 var data = new Array();
-
+function verifyTags(lines){
+	if(lines.indexOf("transitions.start")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag transitions.start not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	if(lines.indexOf("transitions.end")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag transitions.end not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	if(lines.indexOf("formalDefinition.start")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag formalDefinition.start not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	if(lines.indexOf("formalDefinition.end")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag formalDefinition.end not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	if(lines.indexOf("input.start")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag input.start not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	if(lines.indexOf("input.end")<0){
+		document.getElementById('output').style.color = "Red";
+		document.getElementById('output').innerHTML = "Opening tag input.end not found."
+		document.getElementById('lxChk').disabled = true;
+		return false;
+	}; 
+	document.getElementById('lxChk').disabled = false;
+	return true;
+	
+}
 function loadEditor() {
 	$(function() {
 			lines = [];
@@ -17,27 +57,31 @@ function loadEditor() {
 					return true
 				}
 			}).remove();
-			 clearLexicalAll();
+			clearLexicalAll();
 			$('#output').html("");
 			//console.log($('#output').html());
 			$('#visualization').html("");
-			variableDeclaration = [];
+			
 			variableName = '';
 			data = [];
 			data = new Array();
             //var lines = document.getElementById("editor").value.split(/(?:\\[rn]|[\r\n]+)+/g);
-			
+			if(!verifyTags(lines))
+				return;
 			//console.log(lines[0])			
 			var i= 0;
 			while(i < lines.length)
 			{
+
 				//transitions Table		
 				if(lines[i] == "transitions.start")
 				{
+
 					var e = 1;
 					i++;
 					while(lines[i] != "transitions.end")
 					{
+						
 						var line= lines[i].split("=");
 						line[0]= line[0].replace("(", "").replace(")", "");
 						line[1]= line[1].replace("(", "").replace(")", "");
@@ -77,9 +121,11 @@ function loadEditor() {
 				//Formal Definition
 				if(lines[i] == "formalDefinition.start")
 				{
+
 					i++;
 					while(lines[i] != "formalDefinition.end")
 					{
+						
 						var variableDeclaration= lines[i].split("=");
 						var variableName= variableDeclaration[0];
 						var variableContent= variableDeclaration[1].split(";");
@@ -121,7 +167,7 @@ function loadEditor() {
 					i++;
 					while(lines[i] != "input.end")
 					{
-					
+						
 						var variableDeclaration= lines[i].split("=");
 						var variableName= variableDeclaration[0];
 						
@@ -133,21 +179,14 @@ function loadEditor() {
 						else
 						{
 						}
-						
-						i++;
+							i++;
 					}
 				}
-				
-				
-				i++;
+					i++;
 			}
-		
+
 			loadTransitionsTable();
-			   
-			   
-			   
-			   
-			   
-            });
+  
+        });
 }
 

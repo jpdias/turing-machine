@@ -16,7 +16,8 @@ function loadLocal(arg) {
             var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
 			
 			//console.log(lines[0]);
-			
+			if(!verifyTags(lines))
+				return;
 			var i= 0;
 			while(i < lines.length)
 			{

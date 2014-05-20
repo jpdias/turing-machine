@@ -25,7 +25,8 @@ function handleFileSelect(evt) {
             var lines = readerResult.split("\r\n");
 			
 			$('#editor').val(readerResult); 
-			
+			if(!verifyTags(lines))
+				return;
 			var i= 0;
 			while(i < lines.length)
 			{
