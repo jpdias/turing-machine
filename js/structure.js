@@ -187,7 +187,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		}
 		if(anim == false){
 			document.getElementById('animation').style.fontSize="large";
-			document.getElementById('animation').innerHTML="Input to long!";}
+			document.getElementById('animation').innerHTML="Input too long!";}
 		else{
 			for(i=0;i<elements.length-1;i++){
 				//console.log(i+ ": "+elements[i]);
