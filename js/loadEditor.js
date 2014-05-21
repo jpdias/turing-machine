@@ -239,7 +239,17 @@ function loadEditor() {
 						{
 							if(lines[i].trim().indexOf("inputPosition") != -1)
 							{
-								var where = lines[i].trim().split(")")[0].split("(")[1];
+								var whereData = lines[i].trim().split(")")[0].split("(")[1];
+							
+								var whereDataSplit = whereData.split("->");
+								
+								var where = new Array();
+								
+								for(var j = 0; j < whereDataSplit.length; j++)
+								{
+									where.push(whereDataSplit[j]);
+								}
+								
 								
 								var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
 								
