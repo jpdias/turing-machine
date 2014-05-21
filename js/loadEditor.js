@@ -2,7 +2,6 @@ var imported = document.createElement('script');
 imported.src = 'js/structure.js';
 document.head.appendChild(imported);
 
-var data = new Array();
 function verifyTags(lines){
 	if(lines.indexOf("transitions.start")<0){
 		document.getElementById('output').style.color = "Red";
@@ -72,7 +71,7 @@ function loadEditor() {
 			var i= 0;
 			while(i < lines.length)
 			{
-				//transitions Table		
+				//Transitions Table
 				if(lines[i] == "transitions.start")
 				{
 					var e = 1;
@@ -108,13 +107,13 @@ function loadEditor() {
 						data.push(new Transition(state, nextState, symbol, nextSymbol, direction));
 						
 						addEdge(e.toString(), state, nextState, symbol + " / " + nextSymbol + " , " + direction);
-				
+
 						e++;
 						
 						i++;
 					}
 				}
-				
+
 				//Formal Definition
 				if(lines[i] == "formalDefinition.start")
 				{
@@ -156,7 +155,7 @@ function loadEditor() {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "input.start")
 				{
 					i++;
@@ -178,7 +177,7 @@ function loadEditor() {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "breakpoints.start")
 				{
 					i++;
@@ -188,7 +187,17 @@ function loadEditor() {
 					{
 						if(lines[i].trim().indexOf("state") != -1)
 						{
-							var where = lines[i].trim().split(")")[0].split("(")[1];
+							var whereData = lines[i].trim().split(")")[0].split("(")[1];
+							
+							var whereDataSplit = whereData.split("->");
+							
+							var where = new Array();
+							
+							for(var j = 0; j < whereDataSplit.length; j++)
+							{
+								where.push(whereDataSplit[j]);
+							}
+							
 							
 							var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
 							
@@ -272,13 +281,13 @@ function loadEditor() {
 						i++;
 					}
 				}
-				
-				
+
 				i++;
 			}
-
+		
 			loadTransitionsTable();
+			
+			loadBreakpoints();
   
         });
 }
-

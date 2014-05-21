@@ -164,7 +164,7 @@
                     <tbody id="rowToClone">
                         <tr align="center" valign="middle">
 							<td>
-								<input type="checkbox" id="chk">
+								<input type="checkbox" name="breakpointCheckbox">
 							</td>
                             <td>
                                 <input type="text" class="form-control input-sm" name="currentState">
@@ -225,6 +225,12 @@
 				<button type="button" class="btn btn-warning btn-md" onclick="pause()" id="pauseButton"><i class="glyphicon glyphicon-pause"></i> Pause</button>
 				<button type="button" class="btn btn-success btn-md" onclick="resume()" id="resumeButton"><i class="glyphicon glyphicon-fast-forward"></i> Resume</button>				
 			</div>
+			<div class="col-md-7" style="display:inline-block">
+				<div class="col-md-3" style="margin-top:10px;padding-right:0px;padding-left:0px;"><h4>Tape Breakpoints:</h4></div>
+				<div style="margin-top:10px;margin-left:0px;" class="col-md-8"><input type="text" class="form-control" id="inputBreakpoints"></input></div>	
+			</div>
+			<div class="col-md-5" >
+		</div>
 		</div>
 	
 		<div class="col-md-12">
@@ -279,7 +285,7 @@
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
 
-            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" id="chk"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
+            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" name="breakpointCheckbox"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
     </script>
 	
@@ -319,10 +325,11 @@
 		$('#visualization').empty();
 		variableDeclaration = [];
 		variableName = '';
-		data = [];
-		lines = [];
 		
 		data = new Array();
+		breakpoints = new Array();
+		
+		$('input[name=breakpointCheckbox]').attr('checked', false);
 	};
 	
 	$(document).ready(function()
