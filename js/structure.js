@@ -285,19 +285,29 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				
 			while(j < breakpoints.length)
 			{
-				if(breakpoints[j].type == "state" && this.currentState == breakpoints[j].where && breakpoints[j].times == 1)
+				if(breakpoints[j].type == "state" && this.currentState == breakpoints[j].where)
 				{
-					$('#output').append("Breakpoint!" + " Current State: " + this.currentState + "; Message: " + breakpoints[j].message + "<br>");
+					breakpoints[j].incrementCounter();
 					
-					turingMachine.pause();
+					if(breakpoints[j].counter == breakpoints[j].times)
+					{
+						$('#output').append("Breakpoint!" + " Current State: " + this.currentState + "; Message: " + breakpoints[j].message + "<br>");
+						
+						turingMachine.pause();
+					}
 				}
 				else
 				{
-					if(breakpoints[j].type == "inputPosition" && this.tape.pos == breakpoints[j].where && breakpoints[j].times == 1)
+					if(breakpoints[j].type == "inputPosition" && this.tape.pos == breakpoints[j].where)
 					{
-						$('#output').append("Breakpoint!" + " Current Tape Position: " + this.tape.pos + "; Message: " + breakpoints[j].message + "<br>");
+						breakpoints[j].incrementCounter();
 						
-						turingMachine.pause();
+						if(breakpoints[j].counter == breakpoints[j].times)
+						{
+							$('#output').append("Breakpoint!" + " Current Tape Position: " + this.tape.pos + "; Message: " + breakpoints[j].message + "<br>");
+							
+							turingMachine.pause();
+						}
 					}
 				}
 				
@@ -448,4 +458,16 @@ function Breakpoint(type, where, times, message)
 	this.where = where;
 	this.times = times;
 	this.message = message;
+	
+	this.counter = 0;
+	
+	this.resetCounter = function()
+	{
+		this.counter = 0;
+	}
+	
+	this.incrementCounter = function()
+	{
+		this.counter = this.counter + 1;
+	}
 }
