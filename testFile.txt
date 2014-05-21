@@ -29,6 +29,7 @@ input.end
 
 // Breakpoints
 breakpoints.start
-	state(Q0){times=1;message="Reached Q0!"};
+	state(Q0){times=1;message="Reached state Q0 for the first time!"};
+	state(Q0){times=2;message="Reached state Q0 for the second time!"};
 	inputPosition(0){times=1;message="Reached input position 0!"};
 breakpoints.end
