@@ -2,8 +2,6 @@ var imported = document.createElement('script');
 imported.src = 'js/structure.js';
 document.head.appendChild(imported);
 
-var data = new Array();
-
 function loadLocal(arg) {
 	$(function() {
 		clearAll();
@@ -21,7 +19,7 @@ function loadLocal(arg) {
 			var i= 0;
 			while(i < lines.length)
 			{
-				//transitions Table		
+				//Transitions Table
 				if(lines[i] == "transitions.start")
 				{
 					var e = 1;
@@ -57,13 +55,13 @@ function loadLocal(arg) {
 						data.push(new Transition(state, nextState, symbol, nextSymbol, direction));
 						
 						addEdge(e.toString(), state, nextState, symbol + " / " + nextSymbol + " , " + direction);
-				
+
 						e++;
 						
 						i++;
 					}
 				}
-				
+
 				//Formal Definition
 				if(lines[i] == "formalDefinition.start")
 				{
@@ -105,7 +103,7 @@ function loadLocal(arg) {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "input.start")
 				{
 					i++;
@@ -127,7 +125,7 @@ function loadLocal(arg) {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "breakpoints.start")
 				{
 					i++;
@@ -137,7 +135,17 @@ function loadLocal(arg) {
 					{
 						if(lines[i].trim().indexOf("state") != -1)
 						{
-							var where = lines[i].trim().split(")")[0].split("(")[1];
+							var whereData = lines[i].trim().split(")")[0].split("(")[1];
+							
+							var whereDataSplit = whereData.split("->");
+							
+							var where = new Array();
+							
+							for(var j = 0; j < whereDataSplit.length; j++)
+							{
+								where.push(whereDataSplit[j]);
+							}
+							
 							
 							var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
 							
@@ -221,43 +229,15 @@ function loadLocal(arg) {
 						i++;
 					}
 				}
-				
-				
+
 				i++;
 			}
 		
 			loadTransitionsTable();
+			
+			loadBreakpoints();
 			   
             });
+			
         });
 }
-
-
-function loadTransitionsTable() {
-    for (var i = 1; i < data.length; i++) {
-        cloneRow()
-    }
-
-    var currentStateInputs = document.getElementsByName('currentState');
-
-    var nextStateInputs = document.getElementsByName('nextState');
-
-    var scanSymbolInputs = document.getElementsByName('scanSymbol');
-
-    var printSymbolInputs = document.getElementsByName('printSymbol');
-
-    var directionInputs = document.getElementsByName('direction');
-
-    for (var i = 0; i < data.length; i++) {
-        currentStateInputs[i].value = data[i].currentState;
-
-        nextStateInputs[i].value = data[i].nextState;
-
-        scanSymbolInputs[i].value = data[i].scanSymbol;
-
-        printSymbolInputs[i].value = data[i].printSymbol;
-
-        directionInputs[i].value = data[i].direction;
-    }
-}
-

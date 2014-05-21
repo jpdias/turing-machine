@@ -164,7 +164,7 @@
                     <tbody id="rowToClone">
                         <tr align="center" valign="middle">
 							<td>
-								<input type="checkbox" id="chk">
+								<input type="checkbox" name="breakpointCheckbox">
 							</td>
                             <td>
                                 <input type="text" class="form-control input-sm" name="currentState">
@@ -285,7 +285,7 @@
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
 
-            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" id="chk"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
+            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" name="breakpointCheckbox"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
     </script>
 	
@@ -325,10 +325,11 @@
 		$('#visualization').empty();
 		variableDeclaration = [];
 		variableName = '';
-		data = [];
-		lines = [];
 		
 		data = new Array();
+		breakpoints = new Array();
+		
+		$('input[name=breakpointCheckbox]').attr('checked', false);
 	};
 	
 	$(document).ready(function()

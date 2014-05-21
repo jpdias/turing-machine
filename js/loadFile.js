@@ -33,7 +33,7 @@ function handleFileSelect(evt) {
 			var i= 0;
 			while(i < lines.length)
 			{
-				//transitions Table		
+				//Transitions Table
 				if(lines[i] == "transitions.start")
 				{
 					var e = 1;
@@ -69,13 +69,13 @@ function handleFileSelect(evt) {
 						data.push(new Transition(state, nextState, symbol, nextSymbol, direction));
 						
 						addEdge(e.toString(), state, nextState, symbol + " / " + nextSymbol + " , " + direction);
-				
+
 						e++;
 						
 						i++;
 					}
 				}
-				
+
 				//Formal Definition
 				if(lines[i] == "formalDefinition.start")
 				{
@@ -117,7 +117,7 @@ function handleFileSelect(evt) {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "input.start")
 				{
 					i++;
@@ -139,7 +139,7 @@ function handleFileSelect(evt) {
 						i++;
 					}
 				}
-				
+
 				if(lines[i] == "breakpoints.start")
 				{
 					i++;
@@ -149,7 +149,17 @@ function handleFileSelect(evt) {
 					{
 						if(lines[i].trim().indexOf("state") != -1)
 						{
-							var where = lines[i].trim().split(")")[0].split("(")[1];
+							var whereData = lines[i].trim().split(")")[0].split("(")[1];
+							
+							var whereDataSplit = whereData.split("->");
+							
+							var where = new Array();
+							
+							for(var j = 0; j < whereDataSplit.length; j++)
+							{
+								where.push(whereDataSplit[j]);
+							}
+							
 							
 							var betweenBrackets = lines[i].trim().split("}")[0].split("{")[1];
 							
@@ -233,12 +243,13 @@ function handleFileSelect(evt) {
 						i++;
 					}
 				}
-				
-				
+
 				i++;
 			}
 		
 			loadTransitionsTable();
+			
+			loadBreakpoints();
         }
         reader.readAsText(file);
         var dropZone = document.getElementById('dropzone');
@@ -280,6 +291,49 @@ function loadTransitionsTable() {
 
         directionInputs[i].value = data[i].direction;
     }
+}
+
+function loadBreakpoints()
+{
+	var stateBreakpoints = "";
+	var inputBreakpoints = "";
+	
+	for(var i = 0; i < breakpoints.length; i++)
+	{
+        if(breakpoints[i].type == "state")
+		{
+			for(var j = 0; j < breakpoints[i].where.length; j++)
+			{
+				$('input[name=breakpointCheckbox]').attr('checked', true);
+			}
+		}
+		else
+		{
+			if(breakpoints[i].type == "inputPosition")
+			{
+				var inputBreakpoint = "";
+				
+				for(var j = 0; j < breakpoints[i].where.length; j++)
+				{
+					inputBreakpoint = inputBreakpoint + breakpoints[i].where[j];
+					
+					if(j != breakpoints[i].where.length - 1)
+					{
+						inputBreakpoint = inputBreakpoint + ",";
+					}
+				}
+				
+				inputBreakpoints = inputBreakpoints + inputBreakpoint;
+				
+				if(i != breakpoints.length - 1)
+				{
+					inputBreakpoints = inputBreakpoints + ";";
+				}
+			}
+		}
+    }
+	
+	$("#inputBreakpoints").val(inputBreakpoints);
 }
 
 // Setup the dnd listeners.
