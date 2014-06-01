@@ -4,6 +4,10 @@ document.head.appendChild(imported);
 
 var data = new Array();
 
+var currentInput = 0;
+
+var inputs = new Array();
+
 var breakpoints = new Array();
 
 function handleFileSelect(evt) {
@@ -130,10 +134,21 @@ function handleFileSelect(evt) {
 						if(variableName == "Input")
 						{
 							var inputContent= variableDeclaration[1].split(";");
-							document.getElementById('inputString').value = inputContent[0];
+							
+							// if input text area is empty do not add ',' before adding the input string
+							if(document.getElementById('inputString').value == "")
+							{
+								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0];
+							}
+							else
+							{
+								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0];
+							}
+							
 						}
 						else
 						{
+							
 						}
 						
 						i++;
