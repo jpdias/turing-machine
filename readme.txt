@@ -1,4 +1,4 @@
-**PROJECT TITLE: tmsim -  Turing Machine
+﻿**PROJECT TITLE: tmsim -  Turing Machine
 
 **GROUP: T04G02
 
@@ -11,7 +11,7 @@ NAME3: João Pedro Matos Teixeira Dias, NR3: 201106781, GRADE3: 18, CONTRIBUTION
 ** SUMMARY: A ferramenta desenvolvida é capaz de interpretar uma linguagem 
 pré-definida para máquinas de turing, compilar e executar a mesma.
 
-**DEALING WITH SYNTACTIC ERRORS: A ferramenta é capaz de deter erros síntaticos, terminando e
+**DEALING WITH SYNTACTIC ERRORS: A ferramenta é capaz de deter erros sintáticos, terminando e
  devolvendo a linha com o erro, e, de forma geral, uma descrição do seu tipo.
 
 **SEMANTIC ANALYSIS: (Refer the possible semantic rules implemented by your tool.)
