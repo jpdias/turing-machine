@@ -438,6 +438,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			else
 			{
 				turingMachine.step();
+				var elem = document.getElementById('output');
+  elem.scrollTop = elem.scrollHeight;
 			}
 		}, timeBetween);
 		
