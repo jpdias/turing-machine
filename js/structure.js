@@ -239,8 +239,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				if(finalStates[j] == this.currentState)
 				{
 					
-					stepString= "<br><font color=\"green\">" + "Success!" + "</font><br>";
-					//stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
+					stepString= "<font color=\"green\">" + "Success: finished in a final state!" + "</font><br>";
+					//stepString+= "<font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 					stepResult.insertAdjacentHTML('beforeend', stepString);
 					
 					colorNode(turingMachine.currentState);
@@ -263,8 +263,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		}
 		else
 		{
-			stepString = "<br><font color=\"red\">" + "Fail!" + "</font><br>";
-			//stepString+= "<br><font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
+			stepString = "<font color=\"red\">" + "Failure: did not finish on a final state! " + "</font><br>";
+			//stepString+= "<font color=\"black\">" + "Number of steps= " + this.stepNumber + "</font><br>";
 			stepResult.insertAdjacentHTML('beforeend', stepString);
 			
 			colorNode(turingMachine.currentState);
@@ -403,16 +403,37 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			if (stepReturn != 2)
 			{
 				clearInterval(steper);
-				
 				clearInterval(timer);
 				
 				turingMachine.reset();
 				
 				document.getElementById("runButton").disabled = false;
+				document.getElementById("stopButton").disabled = true;
+				document.getElementById("pauseButton").disabled = true;
 				
 				running = false;
 				
 				time = 0;
+				
+				
+				if(currentInput < inputs.length)
+				{
+					//create Tape
+					tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
+					
+					currentInput++;
+			
+					//tape.show();
+			
+					//create Turing Machine
+					turingMachine= new TuringMachine(tape, data, initialStateInput, finalStates);
+			
+					//turingMachine.show();
+					
+					turingMachine.run();
+					
+					running = true;
+				}
 			}
 			else
 			{
@@ -456,16 +477,37 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				if (stepReturn != 2)
 				{
 					clearInterval(steper);
-					
 					clearInterval(timer);
-					
+				
 					turingMachine.reset();
-					
+				
 					document.getElementById("runButton").disabled = false;
+					document.getElementById("stopButton").disabled = true;
+					document.getElementById("pauseButton").disabled = true;
 					
 					running = false;
 					
 					time = 0;
+					
+					
+					if(currentInput < inputs.length)
+					{
+						//create Tape
+						tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
+						
+						currentInput++;
+				
+						//tape.show();
+				
+						//create Turing Machine
+						turingMachine= new TuringMachine(tape, data, initialStateInput, finalStates);
+				
+						//turingMachine.show();
+						
+						turingMachine.run();
+						
+						running = true;
+					}
 				}
 				else
 				{

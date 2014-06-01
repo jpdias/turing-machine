@@ -24,6 +24,7 @@ transitions.end
 
 // Tape Input
 input.start
+	Input=000111;
 	Input=000000111111;
 input.end
 
@@ -34,4 +35,5 @@ breakpoints.start
 	state(Q0->Q1){times=1;message="Reached transition Q0->Q1 for the first time!"};
 	state(Q0->Q1){times=2;message="Reached transition Q0->Q1 for the second time!"};
 	inputPosition(0){times=1;message="Reached input position 0!"};
+	inputPosition(0->1){times=1;message="Reached input transition 0->1!"};
 breakpoints.end
