@@ -290,6 +290,7 @@
     </script>
 	
 	<script type="text/javascript">
+
 	$(document).on('hidden.bs.modal', function (e) {
 		$(e.target).removeData('bs.modal');
 	});
@@ -398,7 +399,7 @@
 				output.innerHTML = "";
 				
 				output.insertAdjacentHTML('beforeend', "Running Turing Machine...<br>");
-			
+				
 				turingMachine.run();
 			}
 		}

@@ -434,10 +434,31 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 					
 					running = true;
 				}
+				else
+				{
+					if(currentInput == inputs.length)
+					{
+						currentInput = 0;
+						
+						//create Tape
+						tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
+					
+						currentInput++;
+			
+						//tape.show();
+			
+						//create Turing Machine
+						turingMachine= new TuringMachine(tape, data, initialStateInput, finalStates);
+			
+						//turingMachine.show();
+					}
+				}
 			}
 			else
 			{
 				turingMachine.step();
+				var elem = document.getElementById('output');
+				elem.scrollTop = elem.scrollHeight;
 			}
 		}, timeBetween);
 		
@@ -508,10 +529,31 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 						
 						running = true;
 					}
+					else
+					{
+						if(currentInput == inputs.length)
+						{
+							currentInput = 0;
+						
+							//create Tape
+							tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
+						
+							currentInput++;
+				
+							//tape.show();
+				
+							//create Turing Machine
+							turingMachine= new TuringMachine(tape, data, initialStateInput, finalStates);
+				
+							//turingMachine.show();
+						}
+					}
 				}
 				else
 				{
 					turingMachine.step();
+					var elem = document.getElementById('output');
+					elem.scrollTop = elem.scrollHeight;
 				}
 			}, timeBetween);
 		}
