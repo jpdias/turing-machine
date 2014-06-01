@@ -439,7 +439,7 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			{
 				turingMachine.step();
 				var elem = document.getElementById('output');
-  elem.scrollTop = elem.scrollHeight;
+				elem.scrollTop = elem.scrollHeight;
 			}
 		}, timeBetween);
 		
@@ -514,6 +514,8 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 				else
 				{
 					turingMachine.step();
+					var elem = document.getElementById('output');
+					elem.scrollTop = elem.scrollHeight;
 				}
 			}, timeBetween);
 		}
