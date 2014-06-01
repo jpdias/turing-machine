@@ -188,9 +188,8 @@ function lexicalCheck()
 			}
 		}
 		
-		if(finalStateInputFound == false){
+		if(finalStateInputFound == false)
 			finalStatesInputFound = false;
-		}
 	}
 	
 	if(finalStatesInput.length > 0 && finalStatesInputFound)
@@ -216,33 +215,40 @@ function lexicalCheck()
 		
 	inputString = document.getElementById('inputString').value;
 	
-	var inputCharsFound = true;
+	inputs = inputString.split(",");
 	
-	for(var i = 0; i < inputString.length; i++)
+	for(k = 0; k < inputs.length; k++)
 	{
-		var inputCharFound = false;
+		inputString = inputs[k];
 		
-		for(var j = 0; j < inputSymbols.length; j++)
+		var inputCharsFound = true;
+		
+		for(var i = 0; i < inputString.length; i++)
 		{
-			if(inputSymbols[j] == inputString[i])
+			var inputCharFound = false;
+			
+			for(var j = 0; j < inputSymbols.length; j++)
 			{
-				inputCharFound = true;
+				if(inputSymbols[j] == inputString[i])
+				{
+					inputCharFound = true;
+				}
 			}
+			
+			if(inputCharFound == false)
+				inputCharsFound = false;
 		}
-		
-		if(inputCharFound == false)
-			inputCharsFound = false;
 	}
 	
 	if(inputString.length > 0 && inputCharsFound)
 	{
-		lexicalCheckString = "<font color=\"green\">" + "Input String Ok!" + "</font><br><br>";
+		lexicalCheckString = "<font color=\"green\">" + "Input String(s) Ok!" + "</font><br><br>";
 	}
 	else
 	{
-		lexicalCheckString = "<font color=\"red\">" + "Input String Error!" + "</font><br><br>";
+		lexicalCheckString = "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input String Error!" + "</font><br><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
 		
 		error = true;
 	}
@@ -441,7 +447,9 @@ function lexicalCheck()
 		
 function loadDataToStructures(){
 	//create Tape
-	tape= new Tape(alphabetSet, blankSymbolInput, 0, inputString);
+	tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
+	
+	currentInput++;
 		
 	//tape.show();
 		

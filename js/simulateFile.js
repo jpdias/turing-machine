@@ -6,9 +6,9 @@ function loadLocal(arg) {
 	$(function() {
 		clearAll();
 		clearLexicalCheck();
-            $.get(arg, function(dados) {
-                readerResult = dados;
-			$('#editor').val(dados); 
+            $.get(arg, function(localData) {
+                readerResult = localData;
+			$('#editor').val(localData); 
 
 			//read file line by line
             var lines = readerResult.split(/(?:\\[rn]|[\r\n]+)+/g);
@@ -116,10 +116,21 @@ function loadLocal(arg) {
 						if(variableName == "Input")
 						{
 							var inputContent= variableDeclaration[1].split(";");
-							document.getElementById('inputString').value = inputContent[0];
+							
+							// if input text area is empty do not add ',' before adding the input string
+							if(document.getElementById('inputString').value == "")
+							{
+								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0];
+							}
+							else
+							{
+								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0];
+							}
+							
 						}
 						else
 						{
+							
 						}
 						
 						i++;
