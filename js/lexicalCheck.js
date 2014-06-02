@@ -215,12 +215,12 @@ function lexicalCheck()
 		
 	inputString = document.getElementById('inputString').value;
 	
-	inputs = inputString.split(",");
+	inputs = inputString.replace("+", "").replace("-", "").replace("*", "").replace("/", "").split(",");
 	
 	for(k = 0; k < inputs.length; k++)
 	{
-		inputString = inputs[k];
-		
+	
+		inputString = inputs[k].replace(/[+-/*]/g, "");
 		var inputCharsFound = true;
 		
 		for(var i = 0; i < inputString.length; i++)

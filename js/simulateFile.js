@@ -116,15 +116,16 @@ function loadLocal(arg) {
 						if(variableName == "Input")
 						{
 							var inputContent= variableDeclaration[1].split(";");
+
 							
 							// if input text area is empty do not add ',' before adding the input string
 							if(document.getElementById('inputString').value == "")
 							{
-								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0];
+								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0].replace(/[+-/*]/g, "");
 							}
 							else
 							{
-								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0];
+								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0].replace(/[+-/*]/g, "");
 							}
 							
 						}
