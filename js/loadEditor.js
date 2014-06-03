@@ -168,7 +168,7 @@ function loadEditor() {
 						if(variableName == "Input")
 						{
 							var inputContent= variableDeclaration[1].split(";");
-						
+							
 							// if input text area is empty do not add ',' before adding the input string
 							if(document.getElementById('inputString').value == "")
 							{
