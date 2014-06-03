@@ -57,7 +57,7 @@ function lexicalCheck()
 	
 	var alphabetSetInput = document.getElementById('alphabetSet').value;
 	
-	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
+	if(alphabetSetInput.length > 0) //&&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
@@ -215,12 +215,12 @@ function lexicalCheck()
 		
 	inputString = document.getElementById('inputString').value;
 	
-	inputs = inputString.replace("+", "").replace("-", "").replace("*", "").replace("/", "").split(",");
+	inputs = inputString.split(",");
 	
 	for(k = 0; k < inputs.length; k++)
 	{
 	
-		inputString = inputs[k].replace(/[+-/*]/g, "");
+		inputString = inputs[k];
 		var inputCharsFound = true;
 		
 		for(var i = 0; i < inputString.length; i++)

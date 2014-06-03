@@ -68,7 +68,7 @@ function loadLocal(arg) {
 					i++;
 					while(lines[i] != "formalDefinition.end")
 					{
-						var variableDeclaration= lines[i].trim().split("=");
+						var variableDeclaration= lines[i].trim().split(/=(.+)?/);
 						var variableName= variableDeclaration[0];
 						var variableContent= variableDeclaration[1].split(";");
 						
@@ -110,7 +110,7 @@ function loadLocal(arg) {
 					while(lines[i] != "input.end")
 					{
 					
-						var variableDeclaration= lines[i].trim().split("=");
+						var variableDeclaration= lines[i].trim().split(/=(.+)?/);
 						var variableName= variableDeclaration[0];
 						
 						if(variableName == "Input")
@@ -121,11 +121,11 @@ function loadLocal(arg) {
 							// if input text area is empty do not add ',' before adding the input string
 							if(document.getElementById('inputString').value == "")
 							{
-								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0].replace(/[+-/*]/g, "");
+								document.getElementById('inputString').value = document.getElementById('inputString').value + inputContent[0];
 							}
 							else
 							{
-								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0].replace(/[+-/*]/g, "");
+								document.getElementById('inputString').value = document.getElementById('inputString').value + "," + inputContent[0];
 							}
 							
 						}
@@ -172,9 +172,9 @@ function loadLocal(arg) {
 								
 							while(j < betweenBracketsSplit.length)
 							{
-								var instructionName = betweenBracketsSplit[j].split("=")[0];
+								var instructionName = betweenBracketsSplit[j].split(/=(.+)?/)[0];
 								
-								var instructionValue = betweenBracketsSplit[j].split("=")[1];
+								var instructionValue = betweenBracketsSplit[j].split(/=(.+)?/)[1];
 								
 								
 								if(instructionName == "times")
@@ -224,9 +224,9 @@ function loadLocal(arg) {
 								
 								while(j < betweenBracketsSplit.length)
 								{
-									var instructionName = betweenBracketsSplit[j].split("=")[0];
+									var instructionName = betweenBracketsSplit[j].split(/=(.+)?/)[0];
 									
-									var instructionValue = betweenBracketsSplit[j].split("=")[1];
+									var instructionValue = betweenBracketsSplit[j].split(/=(.+)?/)[1];
 									
 									if(instructionName == "times")
 									{
