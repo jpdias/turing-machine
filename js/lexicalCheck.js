@@ -37,7 +37,7 @@ function lexicalCheck()
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
-	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9](,Q[0-9])*)+$"))
+	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
 	}
@@ -371,7 +371,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + " On line= " + j + "!" + "</font><br>";
 			
 			error = true;
 		}
