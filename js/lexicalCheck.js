@@ -37,7 +37,7 @@ function lexicalCheck()
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
-	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9](,Q[0-9])*)+$"))
+	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
 	}
@@ -272,23 +272,19 @@ function lexicalCheck()
 	lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 	
 	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
-		
-	if(data.length == 0)
+	
+	
+	data.length = 0
+	
+	for(var j = 0; j < currentStateInputs.length; j++)
 	{
-		for(var i = 0; i < currentStateInputs.length; i++)
-		{
-			//
-		}
+		data.push(new Transition(currentStateInputs[j].value, nextStateInputs[j].value, scanSymbolInputs[j].value, printSymbolInputs[j].value, directionInputs[j].value));
 	}
 	
 	
 	for(var j = 0; j < data.length; j++)
 	{
-		lexicalCheckString = "Row " + parseInt(j + 1) + "<br>";
-	
 		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
 		
 		var currentStateInput = data[j].currentState;
 	
@@ -325,6 +321,8 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Current State Error!" + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current State Error!" + "</font><br>";
 			
 			error = true;
 		}
@@ -371,7 +369,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + " On line= " + j + "!" + "</font><br>";
 			
 			error = true;
 		}
@@ -446,6 +444,8 @@ function lexicalCheck()
 }
 		
 function loadDataToStructures(){
+	currentInput = 0;
+	
 	//create Tape
 	tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
 	

@@ -40,17 +40,22 @@
 	</div>
 	<div class="col-md-12" style="margin-bottom:15px;">
 
-	<div class="col-md-10">
+	<div class="col-md-6">
         <div id="dropzone">Drop file here (txt)</div>
         <output id="list"></output>
 	</div>
-	<div class="col-md-2" style="align:center;text-align:center;">
-			<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-md" onclick="loadLocal('testFile.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 1</button>
-			<button type="button" class="btn btn-warning btn-md" onclick="loadLocal('testFile2.txt')"><i class="glyphicon glyphicon-file"></i></a> Load Example 2</button>
+	<div class="col-md-6" style="align:center;text-align:center;">
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/0n1n.txt')"><i class="glyphicon glyphicon-file"></i></a>n 0s followed by n 1s</button>
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/even1sAndEven0s.txt')"><i class="glyphicon glyphicon-file"></i></a>even # of 1s and even # of 0s</button>
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/copyString.txt')"><i class="glyphicon glyphicon-file"></i></a> copy string</button>
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/checkPalindrome.txt')"><i class="glyphicon glyphicon-file"></i></a> check palindrome</button>
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/sumTwoNumbers.txt')"><i class="glyphicon glyphicon-file"></i></a>sum two numbers (same length)</button>
+		<button type="button" style="margin-bottom:5px;" class="btn btn-warning btn-sm" onclick="loadLocal('examples/unaryToBinary.txt')"><i class="glyphicon glyphicon-file"></i></a>unary to binary</button>
 	</div>
+	
 	</div>
-			 <div class="col-md-12">
-            <h3>Code Editor <button  id="ch" type="button" class="btn btn-success btn-sm" onclick="openEditor()">Open</button>
+	<div class="col-md-12">
+	<h3>Code Editor <button  id="ch" type="button" class="btn btn-success btn-sm" onclick="openEditor()">Open</button>
 	</h3>
 	</div>
 	<div id="editorW" style="display:none;">
@@ -144,7 +149,6 @@
                 <table class="table table-bordered table-condensed intable" id="tableToModify">
                     <thead>
                         <tr>
-						<th><center><i class="glyphicon glyphicon-screenshot"></i></center></th>
                             <th>Current State</th>
                             <th></th>
                             <th>Next State</th>
@@ -163,9 +167,6 @@
                     </thead>
                     <tbody id="rowToClone">
                         <tr align="center" valign="middle">
-							<td>
-								<input type="checkbox" name="breakpointCheckbox">
-							</td>
                             <td>
                                 <input type="text" class="form-control input-sm" name="currentState">
                             </td>
@@ -285,7 +286,7 @@
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
 
-            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td><input type="checkbox" name="breakpointCheckbox"></td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
+            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle"><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
     </script>
 	
