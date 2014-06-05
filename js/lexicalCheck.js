@@ -217,11 +217,17 @@ function lexicalCheck()
 	
 	inputs = inputString.split(",");
 	
+	var validInput= true;
+	
+	var inputStringsErrorMsg= "";
+	
 	for(k = 0; k < inputs.length; k++)
 	{
 	
 		inputString = inputs[k];
 		var inputCharsFound = true;
+		
+		var errorChars= " at char ";
 		
 		for(var i = 0; i < inputString.length; i++)
 		{
@@ -236,11 +242,25 @@ function lexicalCheck()
 			}
 			
 			if(inputCharFound == false)
+			{
 				inputCharsFound = false;
+				validInput = false;
+				errorChars+= i + ", ";
+			}
+		}
+		
+
+		if(!inputCharsFound)
+		{
+			
+			var inputErrorMsg= "<font color=\"red\">" + "Input string error: input number " + (k + 1) + errorChars + "</font><br>";
+			inputStringsErrorMsg += inputErrorMsg;
 		}
 	}
 	
-	if(inputString.length > 0 && inputCharsFound)
+	
+	
+	if(inputString.length > 0 && validInput)
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Input String(s) Ok!" + "</font><br><br>";
 	}
@@ -248,7 +268,7 @@ function lexicalCheck()
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + inputStringsErrorMsg;
 		
 		error = true;
 	}
