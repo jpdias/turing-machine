@@ -149,6 +149,7 @@
                 <table class="table table-bordered table-condensed intable" id="tableToModify">
                     <thead>
                         <tr>
+						<th>#</th>
                             <th>Current State</th>
                             <th></th>
                             <th>Next State</th>
@@ -167,6 +168,7 @@
                     </thead>
                     <tbody id="rowToClone">
                         <tr align="center" valign="middle">
+							<td id="num">1</td>
                             <td>
                                 <input type="text" class="form-control input-sm" name="currentState">
                             </td>
@@ -286,7 +288,7 @@
         function cloneRow() {
             var rowToClone = document.getElementById("rowToClone");
 
-            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle"><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
+            rowToClone.insertAdjacentHTML('beforeend', '<tbody name="rowToClone">' + '<tr align="center" valign="middle" ><td>' + $('#tableToModify tr').length + '</td><td><input type="text" class="form-control input-sm" name="currentState"></td><td><h6><span class="glyphicon glyphicon-arrow-right"></span></h6></td><td><input type="text" class="form-control input-sm" name="nextState"></td><td><h6> <span class="glyphicon glyphicon-flash"></span> </h6></td><td><input type="text" class="form-control input-sm" name="scanSymbol"></td><td><h6> <span class="glyphicon glyphicon-minus"></span></h6></td><td><input type="text" class="form-control input-sm" name="printSymbol"></td><td><h6> <span class="glyphicon glyphicon-transfer"></span> </h6></td><td><input type="text" class="form-control input-sm" name="direction"></td></tr></tbody>');
         }
     </script>
 	

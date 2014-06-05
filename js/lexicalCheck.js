@@ -322,7 +322,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Current State Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current State Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current state error " + " at row " + (j + 1) + ": " + currentStateInput + "</font><br>";
 			
 			error = true;
 		}
@@ -337,7 +337,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Next State Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Next State Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Next state error " + " at row " + (j + 1) + ": " + nextStateInput + "</font><br>";
 			
 			error = true;
 		}
@@ -369,7 +369,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + " On line= " + j + "!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan symbol error " + " at row " + (j + 1) + ": " + scanSymbolInput + "</font><br>";
 			
 			error = true;
 		}
@@ -384,7 +384,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print symbol error " + " at row " + (j + 1) + ": " + printSymbolInput + "</font><br>";
 			
 			error = true;
 		}
@@ -399,7 +399,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Direction Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction error " + " at row " + (j + 1) + ": " + directionInput + "</font><br>";
 			
 			error = true;
 		}
