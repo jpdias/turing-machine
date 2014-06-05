@@ -10,7 +10,7 @@ formalDefinition.end
 
 // Transitions
 transitions.start
-	(Q6,0)->(Q1,X,R);
+	(Q0,0)->(Q1,X,R);
 	(Q0,Y)->(Q3,Y,R);
 	(Q1,0)->(Q1,0,R);
 	(Q1,1)->(Q2,Y,L);
@@ -31,6 +31,7 @@ input.end
 breakpoints.start
 	state(Q0){times=1;message="Reached state Q0 for the first time!"};
 	state(Q0){times=2;message="Reached state Q0 for the second time!"};
+abc
 	state(Q0->Q1){times=1;message="Reached transition Q0->Q1 for the first time!"};
 	state(Q0->Q1){times=2;message="Reached transition Q0->Q1 for the second time!"};
 	inputPosition(0){times=1;message="Reached input position 0!"};

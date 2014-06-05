@@ -274,10 +274,17 @@ function lexicalCheck()
 	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
+	data.length = 0
+	
+	for(var j = 0; j < currentStateInputs.length; j++)
+	{
+		data.push(new Transition(currentStateInputs[j].value, nextStateInputs[j].value, scanSymbolInputs[j].value, printSymbolInputs[j].value, directionInputs[j].value));
+	}
+	
+	
 	for(var j = 0; j < data.length; j++)
 	{
 		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
 		
 		var currentStateInput = data[j].currentState;
 	
@@ -437,6 +444,8 @@ function lexicalCheck()
 }
 		
 function loadDataToStructures(){
+	currentInput = 0;
+	
 	//create Tape
 	tape= new Tape(alphabetSet, blankSymbolInput, 0, inputs[currentInput]);
 	
