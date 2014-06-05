@@ -10,7 +10,7 @@ formalDefinition.end
 
 // Transitions
 transitions.start
-	(Q0,0)->(Q1,X,R);
+	(Q6,0)->(Q1,X,R);
 	(Q0,Y)->(Q3,Y,R);
 	(Q1,0)->(Q1,0,R);
 	(Q1,1)->(Q2,Y,L);

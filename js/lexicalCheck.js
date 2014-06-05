@@ -272,21 +272,10 @@ function lexicalCheck()
 	lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 	
 	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
-		
-	if(data.length == 0)
-	{
-		for(var i = 0; i < currentStateInputs.length; i++)
-		{
-			//
-		}
-	}
 	
 	
 	for(var j = 0; j < data.length; j++)
 	{
-		lexicalCheckString = "Row " + parseInt(j + 1) + "<br>";
-	
 		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		
@@ -325,6 +314,8 @@ function lexicalCheck()
 		else
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Current State Error!" + "</font><br>";
+			
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current State Error!" + "</font><br>";
 			
 			error = true;
 		}
