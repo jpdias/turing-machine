@@ -25,6 +25,7 @@ transitions.end
 // Tape Input
 input.start
 	Input=000111;
+	Input=000000111111;
 input.end
 
 // Breakpoints
