@@ -37,6 +37,8 @@ function lexicalCheck()
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
+	//statesSetInput= statesSetInput.replace(/\s/gm, "");
+	
 	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
@@ -57,7 +59,9 @@ function lexicalCheck()
 	
 	var alphabetSetInput = document.getElementById('alphabetSet').value;
 	
-	if(alphabetSetInput.length > 0) //&&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
+	//alphabetSetInput= alphabetSetInput.replace(/\s/gm, "");
+		
+	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
@@ -76,6 +80,8 @@ function lexicalCheck()
 	
 	
 	blankSymbolInput = document.getElementById('blankSymbol').value;
+	
+	//blankSymbolInput= blankSymbolInput.replace(/\s/gm, "");
 	
 	var blankSymbolInputFound = false;
 	
@@ -104,6 +110,8 @@ function lexicalCheck()
 	
 	
 	var inputSymbolsInput = document.getElementById('inputSymbols').value;
+	
+	//inputSymbolsInput= inputSymbolsInput.replace(/\s/gm, "");
 	
 	inputSymbols = inputSymbolsInput.split(",");
 	
@@ -143,6 +151,8 @@ function lexicalCheck()
 	
 	initialStateInput = document.getElementById('initialState').value;
 	
+	//initialStateInput= initialStateInput.replace(/\s/gm, "");
+	
 	var initialStateInputFound = false;
 	
 	for(var i = 0; i < statesSet.length; i++)
@@ -170,7 +180,9 @@ function lexicalCheck()
 	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
-	//console.log(finalStatesInput);
+	
+	//finalStatesInput= finalStatesInput.replace(/\s/gm, "");
+	
 	finalStates = finalStatesInput.split(",");
 	
 	var finalStatesInputFound = true;
@@ -245,7 +257,7 @@ function lexicalCheck()
 			{
 				inputCharsFound = false;
 				validInput = false;
-				errorChars+= i + ", ";
+				errorChars+= (i + 1) + ", ";
 			}
 		}
 		
