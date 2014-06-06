@@ -2,11 +2,11 @@
 
 **GROUP: T04G02
 
-NAME1: Gil Filipe da Rocha, NR1: 201100629, GRADE1: 18, CONTRIBUTION: 30%
+NAME1: Gil Filipe da Rocha, NR1: 201100629, GRADE1: 18, CONTRIBUTION: 1/3
 
-NAME2: João Carlos Teixeira de Sá, NR2: 201107925, GRADE2: 18, CONTRIBUTION: 30%
+NAME2: João Carlos Teixeira de Sá, NR2: 201107925, GRADE2: 18, CONTRIBUTION: 1/3
 
-NAME3: João Pedro Matos Teixeira Dias, NR3: 201106781, GRADE3: 18, CONTRIBUTION: 30%
+NAME3: João Pedro Matos Teixeira Dias, NR3: 201106781, GRADE3: 18, CONTRIBUTION: 1/3
 
 ** SUMMARY: A ferramenta desenvolvida é capaz de interpretar uma linguagem 
 pré-definida para máquinas de turing, compilar e executar a mesma.
@@ -14,7 +14,8 @@ pré-definida para máquinas de turing, compilar e executar a mesma.
 **DEALING WITH SYNTACTIC ERRORS: A ferramenta é capaz de deter erros sintáticos, terminando e
  devolvendo a linha com o erro, e, de forma geral, uma descrição do seu tipo.
 
-**SEMANTIC ANALYSIS: (Refer the possible semantic rules implemented by your tool.)
+**SEMANTIC ANALYSIS: Verificação se existe concordância entre o alfabeto da fita e do alfabeto da
+máquina e verificação se os estados finais e o estado inicial pertencem ao conjuto de estados da máquina.
 
 **OVERVIEW: Para o desenvolvimento da ferramenta foi utilizada a linguagem de programação
 web JavaScript, sendo que, auxiliarmente foram utilizadas várias bibliotecas adicionais

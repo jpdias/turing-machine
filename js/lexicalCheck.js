@@ -39,7 +39,7 @@ function lexicalCheck()
 	
 	//statesSetInput= statesSetInput.replace(/\s/gm, "");
 	
-	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
+	if(statesSetInput.length > 0 )
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
 	}
@@ -61,7 +61,7 @@ function lexicalCheck()
 	
 	//alphabetSetInput= alphabetSetInput.replace(/\s/gm, "");
 		
-	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
+	if(alphabetSetInput.length > 0)
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
