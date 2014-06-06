@@ -44,7 +44,7 @@ function handleFileSelect(evt) {
 				{
 					//Transitions Table
 					if(lines[i] == "transitions.start")
-					{
+					{						
 						var e = 1;
 						
 						i++;

@@ -37,6 +37,8 @@ function lexicalCheck()
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
+	//statesSetInput= statesSetInput.replace(/\s/gm, "");
+	
 	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
@@ -57,7 +59,9 @@ function lexicalCheck()
 	
 	var alphabetSetInput = document.getElementById('alphabetSet').value;
 	
-	if(alphabetSetInput.length > 0) //&&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
+	//alphabetSetInput= alphabetSetInput.replace(/\s/gm, "");
+		
+	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
@@ -76,6 +80,8 @@ function lexicalCheck()
 	
 	
 	blankSymbolInput = document.getElementById('blankSymbol').value;
+	
+	//blankSymbolInput= blankSymbolInput.replace(/\s/gm, "");
 	
 	var blankSymbolInputFound = false;
 	
@@ -104,6 +110,8 @@ function lexicalCheck()
 	
 	
 	var inputSymbolsInput = document.getElementById('inputSymbols').value;
+	
+	//inputSymbolsInput= inputSymbolsInput.replace(/\s/gm, "");
 	
 	inputSymbols = inputSymbolsInput.split(",");
 	
@@ -143,6 +151,8 @@ function lexicalCheck()
 	
 	initialStateInput = document.getElementById('initialState').value;
 	
+	//initialStateInput= initialStateInput.replace(/\s/gm, "");
+	
 	var initialStateInputFound = false;
 	
 	for(var i = 0; i < statesSet.length; i++)
@@ -170,7 +180,9 @@ function lexicalCheck()
 	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
-	//console.log(finalStatesInput);
+	
+	//finalStatesInput= finalStatesInput.replace(/\s/gm, "");
+	
 	finalStates = finalStatesInput.split(",");
 	
 	var finalStatesInputFound = true;
@@ -217,11 +229,17 @@ function lexicalCheck()
 	
 	inputs = inputString.split(",");
 	
+	var validInput= true;
+	
+	var inputStringsErrorMsg= "";
+	
 	for(k = 0; k < inputs.length; k++)
 	{
 	
 		inputString = inputs[k];
 		var inputCharsFound = true;
+		
+		var errorChars= " at char ";
 		
 		for(var i = 0; i < inputString.length; i++)
 		{
@@ -236,11 +254,25 @@ function lexicalCheck()
 			}
 			
 			if(inputCharFound == false)
+			{
 				inputCharsFound = false;
+				validInput = false;
+				errorChars+= (i + 1) + ", ";
+			}
+		}
+		
+
+		if(!inputCharsFound)
+		{
+			
+			var inputErrorMsg= "<font color=\"red\">" + "Input string error: input number " + (k + 1) + errorChars + "</font><br>";
+			inputStringsErrorMsg += inputErrorMsg;
 		}
 	}
 	
-	if(inputString.length > 0 && inputCharsFound)
+	
+	
+	if(inputString.length > 0 && validInput)
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Input String(s) Ok!" + "</font><br><br>";
 	}
@@ -248,7 +280,7 @@ function lexicalCheck()
 	{
 		lexicalCheckString = "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
 		
-		lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Input String(s) Error!" + "</font><br><br>";
+		lexicalCheckErrorsString = lexicalCheckErrorsString + inputStringsErrorMsg;
 		
 		error = true;
 	}
@@ -322,7 +354,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Current State Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current State Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Current state error " + " at row " + (j + 1) + ": " + currentStateInput + "</font><br>";
 			
 			error = true;
 		}
@@ -337,7 +369,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Next State Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Next State Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "<font color=\"red\">" + "Next state error " + " at row " + (j + 1) + ": " + nextStateInput + "</font><br>";
 			
 			error = true;
 		}
@@ -369,7 +401,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Scan Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan Symbol Error!" + " On line= " + j + "!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Scan symbol error " + " at row " + (j + 1) + ": " + scanSymbolInput + "</font><br>";
 			
 			error = true;
 		}
@@ -384,7 +416,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print Symbol Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Print symbol error " + " at row " + (j + 1) + ": " + printSymbolInput + "</font><br>";
 			
 			error = true;
 		}
@@ -399,7 +431,7 @@ function lexicalCheck()
 		{
 			lexicalCheckString = "<font color=\"red\">" + "Direction Error!" + "</font><br>";
 			
-			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction Error!" + "</font><br>";
+			lexicalCheckErrorsString = lexicalCheckErrorsString + "<font color=\"red\">" + "Direction error " + " at row " + (j + 1) + ": " + directionInput + "</font><br>";
 			
 			error = true;
 		}
