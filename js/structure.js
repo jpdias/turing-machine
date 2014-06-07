@@ -41,7 +41,6 @@ function Tape(alphabet, blank, pos, tapeContent)
 							
 	}
 	//Writes symbol on the tape, at the current position
-	//TODO: check if "Symbol" exists in "this.alphabet"
 	this.write= function(Symbol){
 		this.tapeContent= this.tapeContent.replaceAt(this.pos, Symbol);
 	}
@@ -87,7 +86,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 	this.transitionsTable= transitionsTable;
 	this.initialState= initialState;
 	this.finalStates= finalStates;
-	//this.blankSymbol= blank; // Necessary???
 	this.currentState= initialState;
 	this.stepNumber= 0;
 	
@@ -173,7 +171,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 		document.getElementById('animation').innerHTML ="";
 		var elements = new Array();
 		elements = stepString.split("</font>");
-		//console.log(elements);
 		var size = 40;
 		var padding = '';
 		var anim = true;
@@ -190,7 +187,6 @@ function TuringMachine(tape, transitionsTable, initialState, finalStates)
 			document.getElementById('animation').innerHTML="Input too long!";}
 		else{
 			for(i=0;i<elements.length-1;i++){
-				//console.log(i+ ": "+elements[i]);
 				if(elements[i].indexOf("red")> -1) 
 					document.getElementById('animation').innerHTML += '<div class="tapeanim bs-example1" style="width:'+ size + 'px;'+padding+'outline: 1px dotted #EEA236;background-color:#F0AD4E;font-weight:bolder;" id="anim'+i +'">' + elements[i] +'</font></div>';
 				else

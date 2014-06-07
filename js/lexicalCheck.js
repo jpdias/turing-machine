@@ -23,23 +23,19 @@ function lexicalCheck()
 {
     clearLexicalCheck();
 	$('#output').html("");
-	//console.log($('#output').html());
+
 	$('#visualization').html("");
 
 	var output = document.getElementById('output');
 	
-	// output.innerHTML = "";
-	
 	var outputChildNodes = output.childNodes;
-	
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
-	//statesSetInput= statesSetInput.replace(/\s/gm, "");
+	statesSetInput= statesSetInput.replace(/\s/gm, "");
 	
-	if(statesSetInput.length > 0 && statesSetInput.match("^(Q[0-9]+(,Q[0-9]+)*)+$"))
+	if(statesSetInput.length > 0 )
 	{
 		lexicalCheckString = "<font color=\"green\">" + "States Set Ok!" + "</font><br>";
 	}
@@ -51,17 +47,16 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	statesSet = statesSetInput.split(",");
 	
 	
 	var alphabetSetInput = document.getElementById('alphabetSet').value;
 	
-	//alphabetSetInput= alphabetSetInput.replace(/\s/gm, "");
+	alphabetSetInput= alphabetSetInput.replace(/\s/gm, "");
 		
-	if(alphabetSetInput.length > 0 &&  alphabetSetInput.match("^([A-Z0-9](,[A-Z0-9])*)$"))
+	if(alphabetSetInput.length > 0)
 	{
 		lexicalCheckString = "<font color=\"green\">" + "Alphabet Set Ok!" + "</font><br>";
 	}
@@ -73,15 +68,14 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	alphabetSet = alphabetSetInput.split(",");
 	
 	
 	blankSymbolInput = document.getElementById('blankSymbol').value;
 	
-	//blankSymbolInput= blankSymbolInput.replace(/\s/gm, "");
+	blankSymbolInput= blankSymbolInput.replace(/\s/gm, "");
 	
 	var blankSymbolInputFound = false;
 	
@@ -106,12 +100,10 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	var inputSymbolsInput = document.getElementById('inputSymbols').value;
 	
-	//inputSymbolsInput= inputSymbolsInput.replace(/\s/gm, "");
+	inputSymbolsInput= inputSymbolsInput.replace(/\s/gm, "");
 	
 	inputSymbols = inputSymbolsInput.split(",");
 	
@@ -146,12 +138,10 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	initialStateInput = document.getElementById('initialState').value;
 	
-	//initialStateInput= initialStateInput.replace(/\s/gm, "");
+	initialStateInput= initialStateInput.replace(/\s/gm, "");
 	
 	var initialStateInputFound = false;
 	
@@ -176,12 +166,10 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
 	
-	//finalStatesInput= finalStatesInput.replace(/\s/gm, "");
+	finalStatesInput= finalStatesInput.replace(/\s/gm, "");
 	
 	finalStates = finalStatesInput.split(",");
 	
@@ -218,14 +206,11 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	lexicalCheckString = "<br>" + "Input String Lexical Check: " + "<br>";
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
-	inputString = document.getElementById('inputString').value;
+	inputString = document.getElementById('inputString').value.replace(/\s/gm, "");
 	
 	inputs = inputString.split(",");
 	
@@ -285,10 +270,6 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
-	
-	
 	
 	var currentStateInputs = document.getElementsByName('currentState');
 	
@@ -303,20 +284,17 @@ function lexicalCheck()
 	
 	lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	data.length = 0
 	
 	for(var j = 0; j < currentStateInputs.length; j++)
 	{
-		data.push(new Transition(currentStateInputs[j].value, nextStateInputs[j].value, scanSymbolInputs[j].value, printSymbolInputs[j].value, directionInputs[j].value));
+		data.push(new Transition(currentStateInputs[j].value.replace(/\s/gm, ""), nextStateInputs[j].value.replace(/\s/gm, ""), scanSymbolInputs[j].value.replace(/\s/gm, ""), printSymbolInputs[j].value.replace(/\s/gm, ""), directionInputs[j].value.replace(/\s/gm, "")));
 	}
 	
 	
 	for(var j = 0; j < data.length; j++)
 	{
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		var currentStateInput = data[j].currentState;
 	
@@ -358,8 +336,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(nextStateInput.length > 0 && nextStateFound)
 		{
@@ -373,8 +350,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		var scanSymbolFound = false;
 		
@@ -405,8 +381,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(printSymbolInput.length > 0 && printSymbolFound)
 		{
@@ -420,8 +395,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
 		{
@@ -435,10 +409,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
-		// processData();
+
 	}
 	
 	if(error == false)
