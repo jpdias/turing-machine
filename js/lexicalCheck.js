@@ -23,17 +23,13 @@ function lexicalCheck()
 {
     clearLexicalCheck();
 	$('#output').html("");
-	//console.log($('#output').html());
+
 	$('#visualization').html("");
 
 	var output = document.getElementById('output');
 	
-	// output.innerHTML = "";
-	
 	var outputChildNodes = output.childNodes;
-	
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	var statesSetInput = document.getElementById('statesSet').value;
 	
@@ -51,8 +47,7 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	statesSet = statesSetInput.split(",");
 	
@@ -73,8 +68,7 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 	
 	alphabetSet = alphabetSetInput.split(",");
 	
@@ -105,8 +99,6 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	var inputSymbolsInput = document.getElementById('inputSymbols').value;
@@ -146,8 +138,6 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	initialStateInput = document.getElementById('initialState').value;
 	
@@ -175,8 +165,6 @@ function lexicalCheck()
 		
 		error = true;
 	}
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 	
 	
 	var finalStatesInput = document.getElementById('finalStates').value;
@@ -218,12 +206,9 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	lexicalCheckString = "<br>" + "Input String Lexical Check: " + "<br>";
-	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 	inputString = document.getElementById('inputString').value.replace(/\s/gm, "");
 	
@@ -265,7 +250,7 @@ function lexicalCheck()
 		if(!inputCharsFound)
 		{
 			
-			var inputErrorMsg= "<font color=\"red\">" + "Input string error input number " + (k + 1) + errorChars + "</font><br>";
+			var inputErrorMsg= "<font color=\"red\">" + "Input string error: input number " + (k + 1) + errorChars + "</font><br>";
 			inputStringsErrorMsg += inputErrorMsg;
 		}
 	}
@@ -285,9 +270,6 @@ function lexicalCheck()
 		error = true;
 	}
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-
-	
 	
 	var currentStateInputs = document.getElementsByName('currentState');
 	
@@ -302,8 +284,6 @@ function lexicalCheck()
 	
 	lexicalCheckString = "Transitions Lexical Check:" + "<br>";
 	
-	// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-	
 	
 	data.length = 0
 	
@@ -315,7 +295,6 @@ function lexicalCheck()
 	
 	for(var j = 0; j < data.length; j++)
 	{
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
 		
 		var currentStateInput = data[j].currentState;
 	
@@ -357,8 +336,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(nextStateInput.length > 0 && nextStateFound)
 		{
@@ -372,8 +350,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		var scanSymbolFound = false;
 		
@@ -404,8 +381,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(printSymbolInput.length > 0 && printSymbolFound)
 		{
@@ -419,8 +395,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
+
 		
 		if(directionInput.length > 0 && directionInput == "R" || directionInput == "L")
 		{
@@ -434,10 +409,7 @@ function lexicalCheck()
 			
 			error = true;
 		}
-		
-		// output.insertAdjacentHTML('beforeend', lexicalCheckString);
-		
-		// processData();
+
 	}
 	
 	if(error == false)

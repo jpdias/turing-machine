@@ -68,11 +68,13 @@ function handleFileSelect(evt) {
 									if (current.length != 2) {
 										document.getElementById('output').style.color = "Red";
 										document.getElementById('output').innerHTML = "Syntax error on line: " + i + ". Wrong sequence of tokens, " + "expected to have 2 tokens but has " + current.length + ".";
+										return;
 									}
 									
 									if (next.length != 3) {
 										document.getElementById('output').style.color = "Red";
-										document.getElementById('output').innerHTML = "Syntax error on line: " + i + ". Wrong sequence of tokens, " + "expected to have 3 tokens but has " + current.length + ".";
+										document.getElementById('output').innerHTML = "Syntax error on line: " + i + ". Wrong sequence of tokens, " + "expected to have 3 tokens but has " + next.length + ".";
+										return;
 									}
 									
 									
