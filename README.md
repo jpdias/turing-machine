@@ -1,54 +1,49 @@
-Compiladores
-====
+##PROJECT TITLE: tmsim -  Turing Machine
 
-COMP 2º CheckPoint
+####GROUP: T04G02
 
-->Implementaçao da capacidade de executar a máquina de turing
-->Demonstração do grafo de transições
-	->Mostragem do passo de execução no grafo 
-->Apresentação de algumas estatisticas (mostragem de número de passos)
-->melhoramentos a linguagem e a sua análise (lexical,sintatica,semantica)
-->Debbuger
-	-> Mostragem step-to-step
-->Adicionados alguns menus de ajuda
+NAME1: Gil Filipe da Rocha, NR1: 201100629, GRADE1: 18, CONTRIBUTION: 1/3
 
-A fazer:
-Melhorar e acrescentar mais opções de debug
-Animação grafica da fita
-Melhorias gerais e correçao de bugs
+NAME2: João Carlos Teixeira de Sá, NR2: 201107925, GRADE2: 18, CONTRIBUTION: 1/3
 
-Boa noite professor,
+NAME3: João Pedro Matos Teixeira Dias, NR3: 201106781, GRADE3: 18, CONTRIBUTION: 1/3
 
-De acordo com o solicitado, segue de seguida todas as funcionalidades implementadas (algumas parcialmente) 
-e a desenvolver no restante projeto:
+### SUMMARY
 
-*Implementadas: 
-	* Interface Web fácilmente utilizável
-	* Definição da linguagem da M.Turing
-	* Desenvolvimento de um programa e carregamento do mesmo:
-		* Utilizando uma tabela com notação pré-defenida
-		* Utilizando um ficheiro
-	* Verificação lexical/sintática
-		* Em caso da leitura de ficheiro 
-			* Verificação lexical e sintática
-		* Em caso de leitura da tabela
-			* Verificação lexical (sintática encontra-se por defeito)
-		* Erros
-			* São devolvidos numa consola de acordo com:
-				* Linguagem defenida
-				* Notação defenida
-			* Indicação do tipo de erro e linha em que se encontra 
-				* Descriçao geral do erro
-* Desenvolvimento:
-	* Introdução de testes automáticos para testar o correto funcionamento do Compilador
-	* Correr o programa introduzido
-	* Geração de um grafo de transições (processo da M.Turing)
-	* Debugger passo-a-passo e também com defenição de breakpoints
-	* Animação gráfica da leitura da fita
-	* Menu de Ajuda com introdução a máquina de Turing e a Compiladores
+A ferramenta desenvolvida é capaz de interpretar uma linguagem pré-definida para máquinas de turing, compilar e executar a mesma.
 
-	
-Cumprimentos,
-Grupo 2
-Turma 4
-Tema: Máquina de Turing
+### DEALING WITH SYNTACTIC ERRORS
+A ferramenta é capaz de deter erros sintáticos, terminando e devolvendo a linha com o erro, e, de forma geral, uma descrição do seu tipo.
+
+### SEMANTIC ANALYSIS
+
+Verificação se existe concordância entre o alfabeto da fita e do alfabeto da máquina e verificação se os estados finais e o estado inicial pertencem ao conjuto de estados da máquina.
+
+### OVERVIEW
+
+Para o desenvolvimento da ferramenta foi utilizada a linguagem de programação
+web JavaScript, sendo que, auxiliarmente foram utilizadas várias bibliotecas adicionais
+(bootstrap, vis.js, jquery) que facilitaram o desenvolvimento. A nível da estruturação o 
+sistema encontra-se dividido entre lógica da máquina de Turing e o interpretador da linguagem
+defenida. Na parte da lógica da máquina de Turing foram foram desenvolvidos algoritmos capazes
+de executar a mesma. Do lado do interpretador foram implementados algoritmos capazes de fazer
+tanto análises lexical e sintática e também, apesar de não totalmente, análise semântica. 
+Toda a interface de utilização foi baseada na biblioteca BootStrap e a apresentação de grafos 
+de transições foi feita utilizando a biblioteca vis.js .
+
+### TESTSUITE AND TEST INFRASTRUCTURE
+
+ A aproximação utilizada para otimização dos testes foi
+tirar partido de vários ficheiros com diferentes máquinas de Turing (3 exemplos) e testando sempre
+que era modificada ou acrescentada alguma funcionalidade. Estes testes foram colocados na interface
+gráfica para automatizar a sua utilização.
+
+### PROS
+ Fácil utilização, grande nível de interatividade e apresentação gráfica de informação que de outra forma era
+dificilmente compreendida, e é baseada em tecnologias web, sendo capaz de ser executada em qualquer browser.
+(http://jpdias.github.io/comp)
+
+### CONS
+
+ Os erros por vezes são bastante genéricos devido a dificuldade para fazer cobertura de todos os tipos de erros
+que possam existir. 

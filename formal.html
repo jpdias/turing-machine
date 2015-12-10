@@ -1,29 +1,35 @@
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h4 class="modal-title"><i>Formal Definition</i></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title"><i>Formal Definition</i></h4>
 </div>
-	<div class="modal-body">
-		<div class="te">
+<div class="modal-body">
+    <div class="te">
 
-<p>A Turing machine is formally defined (one-tape) as a 7-tuple <b><i>M = ( Q, &Gamma;, b, &sum;, &delta;, q0, F )</i></b> where: </p>
-<ul class="list-group">
-  <li class="list-group-item"><b>Q</b> is a finite, non-empty set of states</li>
-  <li class="list-group-item"><b>&Gamma;</b> is a finite, non-empty set of the tape <i>alphabet/symbols</i></li>
-  <li class="list-group-item"><b>b &isin; &Gamma;</b>  is the blank symbol (the only symbol allowed to occur on the tape infinitely often at any step during the computation)</li>
-  <li class="list-group-item"><b>&sum; &subseteq; &Gamma; &setminus; {b}</b> is the set of input symbols</li>
-  <li class="list-group-item"><b>q0 &in; Q</b> is the initial state</li>
-  <li class="list-group-item"><b>F &subseteq; Q</b> is the set of final or accepting states.</li>
-  <li class="list-group-item"><b> &delta;: Q &setminus; F &times; &Gamma; &rightarrow; Q &times; &Gamma; &times; {L,R}</b> is a partial function called the transition function, where L is left shift, R is right shift.
-  </li>
-</ul> 
-<blockquote >
-  <p><i>Anything that operates according to these specifications is a Turing machine.</i></p>
-  <footer>Hopcroft and Ullman (1979, p. 148) </footer>
-</blockquote>
+        <p>A Turing machine is formally defined (one-tape) as a 7-tuple <b><i>M = ( Q, &Gamma;, b, &sum;, &delta;, q0, F
+            )</i></b> where: </p>
+        <ul class="list-group">
+            <li class="list-group-item"><b>Q</b> is a finite, non-empty set of states</li>
+            <li class="list-group-item"><b>&Gamma;</b> is a finite, non-empty set of the tape <i>alphabet/symbols</i>
+            </li>
+            <li class="list-group-item"><b>b &isin; &Gamma;</b> is the blank symbol (the only symbol allowed to occur on
+                the tape infinitely often at any step during the computation)
+            </li>
+            <li class="list-group-item"><b>&sum; &subseteq; &Gamma; &setminus; {b}</b> is the set of input symbols</li>
+            <li class="list-group-item"><b>q0 &in; Q</b> is the initial state</li>
+            <li class="list-group-item"><b>F &subseteq; Q</b> is the set of final or accepting states.</li>
+            <li class="list-group-item"><b> &delta;: Q &setminus; F &times; &Gamma; &rightarrow;
+                Q &times; &Gamma; &times; {L,R}</b> is a partial function called the transition function, where L is
+                left shift, R is right shift.
+            </li>
+        </ul>
+        <blockquote>
+            <p><i>Anything that operates according to these specifications is a Turing machine.</i></p>
+            <footer>Hopcroft and Ullman (1979, p. 148)</footer>
+        </blockquote>
 
 
-		</div>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
 </div>
