@@ -33,6 +33,12 @@ Fácil utilização, grande nível de interatividade e apresentação gráfica d
 
 Errors are sometimes quite generic because of the difficulty in covering all kinds of errors that may exist.
 
+## Running 
+
+- With docker:
+    - ```docker build . -t turingmachine```
+    - ```docker run -p 80:80 turingmachine```
+
 ## Authors
 
 - [Gil Rocha](https://github.com/jpdias)
