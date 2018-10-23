@@ -1,49 +1,46 @@
-##PROJECT TITLE: tmsim -  Turing Machine
+# tmsim -  Turing Machine
 
-####GROUP: T04G02
+This project is web-based Turing Machine. It is able to interpret a pre-defined language for turing machines, compile and execute it.
 
-NAME1: Gil Filipe da Rocha, NR1: 201100629, GRADE1: 18, CONTRIBUTION: 1/3
+## DEALING WITH SYNTACTIC ERRORS
 
-NAME2: João Carlos Teixeira de Sá, NR2: 201107925, GRADE2: 18, CONTRIBUTION: 1/3
+The tool is able to hold syntactic errors, ending and returning the line with the error, and, in general, a description of its type.
 
-NAME3: João Pedro Matos Teixeira Dias, NR3: 201106781, GRADE3: 18, CONTRIBUTION: 1/3
+## SEMANTIC ANALYSIS
 
-### SUMMARY
+Checking whether there is agreement between the alphabet of the tape and the alphabet of the machine and verifying whether the final states and the initial state belong to the set of machine states.
 
-A ferramenta desenvolvida é capaz de interpretar uma linguagem pré-definida para máquinas de turing, compilar e executar a mesma.
+## OVERVIEW
 
-### DEALING WITH SYNTACTIC ERRORS
-A ferramenta é capaz de deter erros sintáticos, terminando e devolvendo a linha com o erro, e, de forma geral, uma descrição do seu tipo.
+For the development of the tool the JavaScript web programming language was used, and several additional libraries (bootstrap, vis.js, jquery) were used to facilitate the development. 
 
-### SEMANTIC ANALYSIS
+At the structure level of the system it is divided between the logic of the Turing machine and the interpreter of the defined language. In the part of the logic of the machine of Turing were developed algorithms capable of executing the same one. On the interpreter side, algorithms have been implemented capable of both lexical and syntactic analyzes and also, although not totally, semantic analysis. 
 
-Verificação se existe concordância entre o alfabeto da fita e do alfabeto da máquina e verificação se os estados finais e o estado inicial pertencem ao conjuto de estados da máquina.
+The entire user interface was based on the BootStrap library and the presentation of transitions graphs was done using the vis.js library.
 
-### OVERVIEW
+## TESTSUITE AND TEST INFRASTRUCTURE
 
-Para o desenvolvimento da ferramenta foi utilizada a linguagem de programação
-web JavaScript, sendo que, auxiliarmente foram utilizadas várias bibliotecas adicionais
-(bootstrap, vis.js, jquery) que facilitaram o desenvolvimento. A nível da estruturação o 
-sistema encontra-se dividido entre lógica da máquina de Turing e o interpretador da linguagem
-defenida. Na parte da lógica da máquina de Turing foram foram desenvolvidos algoritmos capazes
-de executar a mesma. Do lado do interpretador foram implementados algoritmos capazes de fazer
-tanto análises lexical e sintática e também, apesar de não totalmente, análise semântica. 
-Toda a interface de utilização foi baseada na biblioteca BootStrap e a apresentação de grafos 
-de transições foi feita utilizando a biblioteca vis.js .
+The approach used to optimize the tests was to take advantage of several files with different Turing machines (3 examples) and test whenever any functionality was modified or added. 
 
-### TESTSUITE AND TEST INFRASTRUCTURE
+These tests are available in the GUI to automate their use.
 
- A aproximação utilizada para otimização dos testes foi
-tirar partido de vários ficheiros com diferentes máquinas de Turing (3 exemplos) e testando sempre
-que era modificada ou acrescentada alguma funcionalidade. Estes testes foram colocados na interface
-gráfica para automatizar a sua utilização.
+## PROS
 
-### PROS
- Fácil utilização, grande nível de interatividade e apresentação gráfica de informação que de outra forma era
-dificilmente compreendida, e é baseada em tecnologias web, sendo capaz de ser executada em qualquer browser.
-(http://jpdias.github.io/comp)
+Fácil utilização, grande nível de interatividade e apresentação gráfica de informação que de outra forma era dificilmente compreendida, e é baseada em tecnologias web, sendo capaz de ser executada em qualquer browser.
+- [Available here.](http://jpdias.github.io/comp)
 
-### CONS
+## CONS
 
- Os erros por vezes são bastante genéricos devido a dificuldade para fazer cobertura de todos os tipos de erros
-que possam existir. 
+Errors are sometimes quite generic because of the difficulty in covering all kinds of errors that may exist.
+
+## Running 
+
+- With docker:
+    - ```docker build . -t turingmachine```
+    - ```docker run -p 80:80 turingmachine```
+
+## Authors
+
+- [Gil Rocha](https://github.com/jpdias)
+- [João Sá](https://github.com/Joao-Sa)
+- [João Pedro Dias](https://github.com/GilRocha)
